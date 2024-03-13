@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: product-portal-backend
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: true
+  datasource:
+    url:
+    username:
+    password:
+  jackson:
+    date-format: dd-MM-yyyy HH:mm:ss
+    time-zone: GMT+7
+
+#app properties
+jwt:
+  jwt-secret: =================jwt=spring==============
+  jwt-expiration: 10 hour
+  jwt-refresh-expiration: 15 hour
+
