@@ -13,16 +13,20 @@ spring:
         format_sql: true
     open-in-view: true
   datasource:
-    url:
-    username:
-    password:
+    url: jdbc:mysql://localhost:3306/product_portal
+    username: root
+    password: 1234
   jackson:
     date-format: dd-MM-yyyy HH:mm:ss
     time-zone: GMT+7
 
-#app properties
+# app properties
+cloudinary:
+  name: dixswfj8d
+  apiKey: 876943471796471
+  apiSecret: XXlwrvw541Qmp83wIgDjxZpIoNQ
+  rootFolder: quiz-website-images
 jwt:
-  jwt-secret: =================jwt=spring==============
-  jwt-expiration: 10 hour
-  jwt-refresh-expiration: 15 hour
-
+  jwtSecret: ======================jwt=spring===========================
+  jwtExpiration: 10 hour
+  jwtRefreshExpiration: 15 hour
