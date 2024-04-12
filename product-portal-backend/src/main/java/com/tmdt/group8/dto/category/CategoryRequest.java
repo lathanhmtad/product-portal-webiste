@@ -1,2 +1,9 @@
-package com.tmdt.group8.dto.category;public class CategoryRequest {
+package com.tmdt.group8.dto.category;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class CategoryRequest {
 }

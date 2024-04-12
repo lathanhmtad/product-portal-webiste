@@ -1,4 +1,5 @@
-create database product_portal;
+DROP DATABASE IF EXISTS product_portal;
+CREATE DATABASE product_portal;
 
 use product_portal;
 
@@ -11,6 +12,7 @@ CREATE TABLE user (
     password VARCHAR(255),
     phone_number VARCHAR(255),
     avatar VARCHAR(255),
+    enabled bit(1),
     role VARCHAR(45),
     created_at DATETIME,
     updated_at DATETIME,
@@ -24,17 +26,18 @@ CREATE TABLE store (
     url_store VARCHAR(255),
     user_id BIGINT,
     created_at DATETIME,
-    updated_at DATETIME,
+    updated_at DATETIME NULL,
     created_by BIGINT,
-    updated_by BIGINT,
+    updated_by BIGINT NULL,
     FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
 CREATE TABLE category (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255),
-    image VARCHAR(255),
-    parent_id BIGINT,
+    image VARCHAR(255) NULL,
+    enabled bit(1),
+    parent_id BIGINT NULL,
     created_at DATETIME,
     updated_at DATETIME,
     created_by BIGINT,
@@ -59,11 +62,9 @@ CREATE TABLE product (
 
 CREATE TABLE image (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    url VARCHAR(255),
+    url text,
     product_id BIGINT,
     store_id BIGINT,
-    created_by BIGINT,
-    updated_by BIGINT,
     FOREIGN KEY (product_id) REFERENCES product(id),
     FOREIGN KEY (store_id) REFERENCES store(id)
 );
@@ -73,7 +74,7 @@ CREATE TABLE comment (
     reply VARCHAR(255),
     product_id BIGINT,
     user_id BIGINT,
-    parent_comment_id BIGINT,
+    parent_comment_id BIGINT NULL,
     created_at DATETIME,
     updated_at DATETIME,
     created_by BIGINT,
@@ -85,7 +86,7 @@ CREATE TABLE comment (
 
 CREATE TABLE url_product (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    url VARCHAR(255),
+    url text,
     product_id BIGINT,
     FOREIGN KEY (product_id) REFERENCES product(id)
 );

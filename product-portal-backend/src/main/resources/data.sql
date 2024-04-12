@@ -1,28 +1,140 @@
--- Inserting sample data into 'user'
-INSERT INTO user (full_name, email, username, password, phone_number, avatar, role, created_at, updated_at) VALUES
-('John Doe', 'john.doe@example.com', 'johndoe', MD5('password123'), '555-0100', 'avatars/johndoe.jpg', 'customer', NOW(), NOW()),
-('Jane Smith', 'jane.smith@example.com', 'janesmith', MD5('password123'), '555-0101', 'avatars/janesmith.jpg', 'customer', NOW(), NOW()),
-('Emma Jones', 'emma.jones@example.com', 'emmajones', MD5('password123'), '555-0102', 'avatars/emmajones.jpg', 'customer', NOW(), NOW()),
-('Michael Brown', 'michael.brown@example.com', 'michaelbrown', MD5('password123'), '555-0103', 'avatars/michaelbrown.jpg', 'customer', NOW(), NOW()),
-('Sophia Taylor', 'sophia.taylor@example.com', 'sophiataylor', MD5('password123'), '555-0104', 'avatars/sophiataylor.jpg', 'customer', NOW(), NOW()),
-('James Wilson', 'james.wilson@example.com', 'jameswilson', MD5('password123'), '555-0105', 'avatars/jameswilson.jpg', 'customer', NOW(), NOW()),
-('Olivia Martin', 'olivia.martin@example.com', 'oliviamartin', MD5('password123'), '555-0106', 'avatars/oliviamartin.jpg', 'customer', NOW(), NOW()),
-('William Davis', 'william.davis@example.com', 'williamdavis', MD5('password123'), '555-0107', 'avatars/williamdavis.jpg', 'customer', NOW(), NOW()),
-('Ava Garcia', 'ava.garcia@example.com', 'avagarcia', MD5('password123'), '555-0108', 'avatars/avagarcia.jpg', 'customer', NOW(), NOW()),
-('Noah Miller', 'noah.miller@example.com', 'noahmiller', MD5('password123'), '555-0109', 'avatars/noahmiller.jpg', 'customer', NOW(), NOW());
+
+-- password: id=1=admin, id=2=baole26072003, id=3->10=password3...->password10
+INSERT INTO participant(id, email, username, full_name, phone_number, password, role, avatar, enabled, created_date, created_by)
+VALUES
+    (1,'admin@gmail.com', 'admin', 'Administrator', 
+		'$2y$10$VVQ9TABhq7/Z8OdydrQnXOhySW.p6r8cLgt3pYjhk/z5s45SRQ4G6', 
+        'ADMIN', 
+        'https://res.cloudinary.com/dixswfj8d/image/upload/v1710918890/quiz-website-images/participants/admin.png', 
+        1, NOW(), 1),
+    (2,'baole26072003@gmail.com', 'baole26072003', 'Lê Quốc Bảo', 
+		'$2y$10$CMsEj8tqZTc/BKl3W/C2vOhw.0Je89jVDP4gnj7k.ZbgoWajDVdLi', 'ADMIN', 
+        'https://res.cloudinary.com/dixswfj8d/image/upload/v1710918896/quiz-website-images/participants/lequocbao.jpg', 
+        1, NOW(), 1),
+    (3,'truc98depgai@gmail.com', 'phamthanhtruc', 'Phạm Thanh Trúc', 
+		'$2y$10$nCpDEV5jLw5uhXHi.x0rTesRUUkvN5DUA1yxKau0vnrKWBHsKzEzW', 'USER', 
+        'https://res.cloudinary.com/dixswfj8d/image/upload/v1710918904/quiz-website-images/participants/phamthanhtruc.jpg', 
+        0, NOW(), 1),
+    (4,'minhduc@gmail.com', 'minhduc', 'Minh Đức', 
+    '$2y$10$FSlzrFV2noXRoDsdbqNkuOIy.ehLoQBRBGsR6UwfONaFPKI4chH.S', 
+    'USER', 
+    'https://res.cloudinary.com/dixswfj8d/image/upload/v1710918899/quiz-website-images/participants/minhduc.jpg', 1, NOW(), 1),
+    (5,'thuylinh@gmail.com', 'thuylinh', 'Mỹ Hòa Thúy Linh', '$2y$10$JLXm4XAQ84tshvoezSHah.jvwtrfXum230irWm5GWGgW4MPJNv.zK', 
+    'USER', 
+    'https://res.cloudinary.com/dixswfj8d/image/upload/v1710918900/quiz-website-images/participants/myhoathuylinh.jpg', 1, NOW(), 1),
+    (6,'vandat@gmail.com', 'vandat', 'Văn Đạt Đỗ', '$2y$10$grM2iS94i3JJEmdVzhtzm.tY/UR4lDXCKu2RZpWy9OxG9serXXr1O', 'USER', 'https://res.cloudinary.com/dixswfj8d/image/upload/v1710918905/quiz-website-images/participants/vandatdo.jpg', 0, NOW(), 1),
+    (7,'linhchi@gmail.com', 'linhchi', 'Linh Chi', '$2y$10$AKYyz5kKCMTnofPp/yDNmekAVnoUCy07AXrUGbSJpWritET4QXFf.', 'USER', 'https://res.cloudinary.com/dixswfj8d/image/upload/v1710918897/quiz-website-images/participants/linhchi.webp', 1, NOW(), 1),
+    (8,'quanghuy@gmail.com', 'ngoquanghuy', 'Ngô Quang Huy', '$2y$10$kYKMNfLfXWZL6VMFue3QO.1E3Te09IA8uiTlKudHt/byxmyHJ0JMm', 'USER', 'https://res.cloudinary.com/dixswfj8d/image/upload/v1710918903/quiz-website-images/participants/ngoquanghuy.jpg', 1, NOW(), 1),
+    (9,'honganh@gmail.com', 'honganh', 'Hồng Anh', '$2y$10$VqbfKioN1fdcvpA9LweMTOoDydAk46Mzrq1ui3f1ynJttdYBPqfsm', 'USER', 'https://res.cloudinary.com/dixswfj8d/image/upload/v1710918892/quiz-website-images/participants/honganh.jpg', 0, NOW(), 1),
+    (10,'khanhhoa@gmail.com', 'khanhhoa', 'Khánh Hoa', '$2y$10$J9b8LYvfP8pdzrh4ssyuAeVboj.wypn4MV2RdSN0kguJKAYtcC2XO', 'USER', 'https://res.cloudinary.com/dixswfj8d/image/upload/v1710918894/quiz-website-images/participants/khanhhoa.webp', 1, NOW(), 1)
+;
+
 
 -- Inserting sample data into 'category'
-INSERT INTO category (name, image, parent_id, created_at, updated_at) VALUES
-('Electronics', 'electronics.jpg', NULL, NOW(), NOW()),
-('Fashion', 'fashion.jpg', NULL, NOW(), NOW()),
-('Home Appliances', 'home_appliances.jpg', NULL, NOW(), NOW()),
-('Books', 'books.jpg', NULL, NOW(), NOW()),
-('Toys', 'toys.jpg', NULL, NOW(), NOW()),
-('Sports', 'sports.jpg', NULL, NOW(), NOW()),
-('Grocery', 'grocery.jpg', NULL, NOW(), NOW()),
-('Health & Beauty', 'health_beauty.jpg', NULL, NOW(), NOW()),
-('Gadgets', 'gadgets.jpg', NULL, NOW(), NOW()),
-('Furniture', 'furniture.jpg', NULL, NOW(), NOW());
+INSERT INTO category (name, image, parent_id, created_at, updated_at, enabled) VALUES
+('Electronics', 'electronics.jpg', NULL, NOW(), NOW(), 1),
+('Fashion', 'fashion.jpg', NULL, NOW(), NOW(), 1),
+('Home Appliances', 'home_appliances.jpg', NULL, NOW(), NOW(), 1),
+('Books', 'books.jpg', NULL, NOW(), NOW(), 1),
+('Toys', 'toys.jpg', NULL, NOW(), NOW(), 1),
+('Sports', 'sports.jpg', NULL, NOW(), NOW(), 1),
+('Grocery', 'grocery.jpg', NULL, NOW(), NOW(), 1),
+('Health & Beauty', 'health_beauty.jpg', NULL, NOW(), NOW(), 1),
+('Gadgets', 'gadgets.jpg', NULL, NOW(), NOW(), 1),
+('Furniture', 'furniture.jpg', NULL, NOW(), NOW(), 1);
+
+-- Inserting hierarchical data for the categories
+-- Assuming the IDs for the categories start from 1 to 10 in the order they were inserted
+
+-- Electronics Subcategories (Level 2)
+INSERT INTO category (name, image, parent_id, created_at, updated_at, enabled) VALUES
+('Mobile Phones', 'mobile_phones.jpg', 1, NOW(), NOW(), 1),
+('Laptops', 'laptops.jpg', 1, NOW(), NOW(), 1),
+('Televisions', 'televisions.jpg', 1, NOW(), NOW(), 1);
+
+-- Fashion Subcategories (Level 2)
+INSERT INTO category (name, image, parent_id, created_at, updated_at, enabled) VALUES
+('Men', 'men_fashion.jpg', 2, NOW(), NOW(), 1),
+('Women', 'women_fashion.jpg', 2, NOW(), NOW(), 1),
+('Accessories', 'accessories_fashion.jpg', 2, NOW(), NOW(), 1);
+
+-- Sub-subcategories for Electronics -> Mobile Phones (Level 3)
+INSERT INTO category (name, image, parent_id, created_at, updated_at, enabled) VALUES
+('Smartphones', 'smartphones.jpg', (SELECT id FROM category WHERE name = 'Mobile Phones'), NOW(), NOW(), 1),
+('Basic Phones', 'basic_phones.jpg', (SELECT id FROM category WHERE name = 'Mobile Phones'), NOW(), NOW(), 1);
+
+-- Sub-subcategories for Fashion -> Women (Level 3)
+INSERT INTO category (name, image, parent_id, created_at, updated_at, enabled) VALUES
+('Dresses', 'dresses.jpg', (SELECT id FROM category WHERE name = 'Women'), NOW(), NOW(), 1),
+('Handbags', 'handbags.jpg', (SELECT id FROM category WHERE name = 'Women'), NOW(), NOW(), 1);
+
+-- Level 4 - Further subcategories for Smartphones
+INSERT INTO category (name, image, parent_id, created_at, updated_at, enabled) VALUES
+('Android Phones', 'android_phones.jpg', (SELECT id FROM category WHERE name = 'Smartphones'), NOW(), NOW(), 1),
+('iPhones', 'iphones.jpg', (SELECT id FROM category WHERE name = 'Smartphones'), NOW(), NOW(), 1);
+
+-- Level 5 - A subcategory for Android Phones
+INSERT INTO category (name, image, parent_id, created_at, updated_at, enabled) VALUES
+('Flagship Android Phones', 'flagship_android.jpg', (SELECT id FROM category WHERE name = 'Android Phones'), NOW(), NOW(), 1);
+
+-- Level 6 - A specific model for Flagship Android Phones
+INSERT INTO category (name, image, parent_id, created_at, updated_at, enabled) VALUES
+('Galaxy S Series', 'galaxy_s.jpg', (SELECT id FROM category WHERE name = 'Flagship Android Phones'), NOW(), NOW(), 1);
+
+-- Note: Adjust the parent_id based on actual IDs after insertion if necessary.
+-- The sub-subcategory insertion uses a SELECT subquery to find the parent ID based on the name for clarity in this example.
+
+-- Home Appliances Subcategories (Level 2)
+INSERT INTO category (name, image, parent_id, created_at, updated_at, enabled) VALUES
+('Kitchen Appliances', 'kitchen_appliances.jpg', 3, NOW(), NOW(), 1),
+('Air Conditioners', 'air_conditioners.jpg', 3, NOW(), NOW(), 1),
+('Washing Machines', 'washing_machines.jpg', 3, NOW(), NOW(), 1);
+
+-- Books Subcategories (Level 2)
+INSERT INTO category (name, image, parent_id, created_at, updated_at, enabled) VALUES
+('Fiction', 'fiction_books.jpg', 4, NOW(), NOW(), 1),
+('Non-Fiction', 'non_fiction_books.jpg', 4, NOW(), NOW(), 1),
+('Children', 'children_books.jpg', 4, NOW(), NOW(), 1);
+
+-- Toys Subcategories (Level 2)
+INSERT INTO category (name, image, parent_id, created_at, updated_at, enabled) VALUES
+('Educational Toys', 'educational_toys.jpg', 5, NOW(), NOW(), 1),
+('Action Figures', 'action_figures.jpg', 5, NOW(), NOW(), 1),
+('Board Games', 'board_games.jpg', 5, NOW(), NOW(), 1);
+
+-- Sports Subcategories (Level 2)
+INSERT INTO category (name, image, parent_id, created_at, updated_at, enabled) VALUES
+('Outdoor', 'outdoor_sports.jpg', 6, NOW(), NOW(), 1),
+('Indoor', 'indoor_sports.jpg', 6, NOW(), NOW(), 1),
+('Gym & Fitness', 'gym_fitness.jpg', 6, NOW(), NOW(), 1);
+
+-- Grocery Subcategories (Level 2)
+INSERT INTO category (name, image, parent_id, created_at, updated_at, enabled) VALUES
+('Fruits & Vegetables', 'fruits_vegetables.jpg', 7, NOW(), NOW(), 1),
+('Dairy & Eggs', 'dairy_eggs.jpg', 7, NOW(), NOW(), 1),
+('Beverages', 'beverages.jpg', 7, NOW(), NOW(), 1);
+
+-- Health & Beauty Subcategories (Level 2)
+INSERT INTO category (name, image, parent_id, created_at, updated_at, enabled) VALUES
+('Skincare', 'skincare.jpg', 8, NOW(), NOW(), 1),
+('Makeup', 'makeup.jpg', 8, NOW(), NOW(), 1),
+('Healthcare', 'healthcare.jpg', 8, NOW(), NOW(), 1);
+
+-- Gadgets Subcategories (Level 2)
+INSERT INTO category (name, image, parent_id, created_at, updated_at, enabled) VALUES
+('Smart Watches', 'smart_watches.jpg', 9, NOW(), NOW(), 1),
+('Cameras', 'cameras.jpg', 9, NOW(), NOW(), 1),
+('Drones', 'drones.jpg', 9, NOW(), NOW(), 1);
+
+-- Furniture Subcategories (Level 2)
+INSERT INTO category (name, image, parent_id, created_at, updated_at, enabled) VALUES
+('Living Room', 'living_room_furniture.jpg', 10, NOW(), NOW(), 1),
+('Bedroom', 'bedroom_furniture.jpg', 10, NOW(), NOW(), 1),
+('Office', 'office_furniture.jpg', 10, NOW(), NOW(), 1);
+
+-- This continuation provides a wider spread of categories across different parent categories.
+-- Adjustments to `parent_id` may be necessary based on actual ID assignments in your database.
+
 
 -- Inserting sample data into 'store'
 INSERT INTO store (name, url_store, user_id, created_at, updated_at) VALUES
