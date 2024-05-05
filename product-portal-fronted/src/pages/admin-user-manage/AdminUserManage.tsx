@@ -1,11 +1,13 @@
 import "./AdminUserManage.scss"
-import { IoSearch } from "react-icons/io5";
-import { FaEdit } from "react-icons/fa";
-import { FaLock } from "react-icons/fa";
-import { FaLockOpen } from "react-icons/fa";
+import {IoSearch} from "react-icons/io5";
+import {FaEdit} from "react-icons/fa";
+import {FaLock} from "react-icons/fa";
+import {FaLockOpen} from "react-icons/fa";
 import Pagination from "../../components/Pagination";
 import Avatar from "../../assets/img/avatar.jpg"
-import { FaXmark } from "react-icons/fa6";
+import {FaXmark} from "react-icons/fa6";
+import {useEffect} from "react";
+
 const userData: {
     userId: string,
     fullName: string,
@@ -80,20 +82,31 @@ const userData: {
     }
 ]
 export default function AdminUserManage() {
-    return (        
+
+    useEffect(() => {
+        getUsers().then(data => console.log(data))
+    }, [])
+
+    const getUsers = async () => {
+        const response = await fetch('http://localhost:8080/api/v1/users')
+        const users = response.json();
+        return users;
+    }
+
+    return (
         <div className="admin-user-manage">
             <div className="toolbar">
                 <div className="search-filter">
                     <div className="search">
                         <input type="text" placeholder='Tìm kiếm...' className="search-input"/>
                         <IoSearch className='search-icon'/>
-                    </div>                                    
+                    </div>
                     <select name="" id="role">
                         <option className="role-item" value="Customer">Customer</option>
                         <option className="role-item" value="Seller">Seller</option>
                         <option className="role-item" value="Admin">Admin</option>
                     </select>
-                </div>            
+                </div>
                 <button className="approve">Duyệt Seller</button>
             </div>
             <table className="table">
@@ -108,7 +121,7 @@ export default function AdminUserManage() {
                 {userData.map((value) => {
                     let lockIcon;
                     if (value.enable) {
-                        lockIcon = <FaLockOpen className="lock-icon" style={{color: 'var(--primary-color)'}}/>        
+                        lockIcon = <FaLockOpen className="lock-icon" style={{color: 'var(--primary-color)'}}/>
                     } else {
                         lockIcon = <FaLock className="lock-icon" style={{color: 'red'}}/>
                     }
@@ -125,9 +138,9 @@ export default function AdminUserManage() {
                     </tr>
                 })}
             </table>
-            <Pagination />
+            <Pagination/>
             <div className="information-card">
-                <img src={Avatar} alt="" className="avatar" />
+                <img src={Avatar} alt="" className="avatar"/>
                 <div className="information">
                     <span className="user-id"><strong>ID người dùng:</strong> 0123456789</span>
                     <span className="full-name"><strong>Họ và tên:</strong> Nguyễn Văn Thuận</span>
