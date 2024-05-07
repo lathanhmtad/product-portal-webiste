@@ -1,5 +1,5 @@
 import "./SellerHeader.scss"
-import Logo from "../../assets/img/logo.jpg"
+import Logo from "../../assets/imgs/logo.jpg"
 import { FaBell, FaRegSun, FaUserCircle } from "react-icons/fa"
 import { Link } from "react-router-dom"
 export default function SellerHeader() {

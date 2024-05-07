@@ -137,7 +137,7 @@ export default function ClientHome() {
                     <div className="list-hot-product">
                         {hotProducts.map((value) => {
                             return <div className="hot-product-item">
-                                <img className="product-img" src={require(`../../assets/img/${value.imgName}`)} alt="product-img"/>
+                                {/*<img className="product-img" src={require(`../../assets/img/${value.imgName}`)} alt="product-img"/>*/}
                                 <div className="hot-product-content">
                                     <span className="product-name">{value.productName}</span>
                                     <div className="product-link">
@@ -156,7 +156,7 @@ export default function ClientHome() {
                     <div className="list-promotion">
                         {promotions.map((value) => {
                             return <div className="promotion-item">
-                                <img className="promotion-banner" src={require(`../../assets/img/${value.imgName}`)} alt="banner-img" />
+                                {/*<img className="promotion-banner" src={require(`../../assets/img/${value.imgName}`)} alt="banner-img" />*/}
                                 <span className="promotion-content">{value.content}</span>
                             </div>
                         })}
@@ -169,7 +169,7 @@ export default function ClientHome() {
                     <div className="list-hot-website">
                         {eCommerceWebs.map((value) => {
                             return <div className="hot-website-item">
-                                <img className="hot-website-logo" src={require(`../../assets/img/${value.imgName}`)} alt="web-logo-img" />
+                                {/*<img className="hot-website-logo" src={require(`../../assets/img/${value.imgName}`)} alt="web-logo-img" />*/}
                                 <div className="hot-website-content">
                                     <span className="hot-website-company">{value.companyName}</span>
                                     <Link className="hot-website-link" to={value.linkWeb}>{value.linkWeb}</Link>
@@ -200,7 +200,7 @@ export default function ClientHome() {
                                 iconTag = <FaExclamationTriangle className="noti-warning-icon" style={{backgroundColor: '#FF3F3F'}}/>
                             }
                             return <div className="noti-warning-item">
-                                <img className="noti-warning-img" src={require(`../../assets/img/${value.imgName}`)} alt="noti-warning-img" />
+                                {/*<img className="noti-warning-img" src={require(`../../assets/img/${value.imgName}`)} alt="noti-warning-img" />*/}
                                 {iconTag}
                                 <div className="noti-warning-content-wrapping">
                                     <span className="noti-warning-content">

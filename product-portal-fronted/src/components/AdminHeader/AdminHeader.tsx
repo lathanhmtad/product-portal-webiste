@@ -1,4 +1,4 @@
-import Logo from "../../assets/img/logo.jpg"
+import Logo from "../../assets/imgs/logo.jpg"
 import { FaBell } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
 import "./AdminHeader.scss"

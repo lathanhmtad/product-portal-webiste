@@ -25,10 +25,19 @@
     justify-content: space-between;
     padding: 20px 0;
     vertical-align: top;
+
     .manage {
+        .manage-dashboard {
+            @include wrapperContent();
+            .dashboard-icon {
+                @include icon();
+            }
+            .manage-dashboard-content {
+                @include content();
+            }
+        }
         .manage-user {
             @include wrapperContent();
-            background-color: var(--primary-color);
             .user-icon {
                 @include icon();
             }

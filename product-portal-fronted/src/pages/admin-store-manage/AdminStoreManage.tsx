@@ -1,104 +1,78 @@
-import { FaEdit } from "react-icons/fa";
-import Pagination from "../../components/Pagination";
-import { IoSearch } from "react-icons/io5";
-import { FaLock } from "react-icons/fa";
-import { FaLockOpen } from "react-icons/fa";
+import {FaEdit} from "react-icons/fa";
+// import Pagination from "../../components/Pagination";
+import {IoCloseCircleOutline, IoSearch} from "react-icons/io5";
+import {FaLock} from "react-icons/fa";
+import {FaLockOpen} from "react-icons/fa";
 import "./AdminStoreManage.scss"
-const storeData: {
-    storeId: string,
-    storeName: string,
-    sellerId: string, 
-    dateRegis: string,
-    enable: boolean
-}[] = [
+import {Image, TableProps, Tooltip} from "antd";
+import {CiCircleCheck} from "react-icons/ci";
+import PageConfigs from "../PageConfigs";
+import {ListResponse} from "../../utils/FetchUtils";
+import {UserResponse} from "../../models/User";
+import useGetAllApi from "../../hooks/use-get-all-api";
+import ResourceUrl from "../../constants/ResouceUrl";
+import ManageTable from "../../components/ManageTable/ManageTable";
+import ManagePagination from "../../components/ManagePagination";
+import useResetManagePageState from "../../hooks/use-reset-manage-page-state";
+import Loading from "../../components/Loading";
+
+
+const columns: TableProps['columns'] = [
     {
-        storeId: 'CH00001',
-        storeName: 'FPTShop',
-        sellerId: '0123456789',
-        dateRegis: '03/03/2024',
-        enable: true
+        title: 'Tên cửa hàng',
+        dataIndex: 'name',
+        key: 'name',
     },
     {
-        storeId: 'CH00001',
-        storeName: 'FPTShop',
-        sellerId: '0123456789',
-        dateRegis: '03/03/2024',
-        enable: true
+        title: 'URL cửa hàng',
+        // width: 100,
+        dataIndex: 'urlStore',
+        key: 'urlStore',
+        render: value => <Tooltip placement="topLeft" title={value}>
+            {value.length > 30 ? `${value.substring(0, 20)}...` : value}
+        </Tooltip>
     },
     {
-        storeId: 'CH00001',
-        storeName: 'FPTShop',
-        sellerId: '0123456789',
-        dateRegis: '03/03/2024',
-        enable: true
+        title: 'Id seller',
+        dataIndex: 'owner',
+        key: 'owner',
+        render: owner => <span>{owner.id}</span>
     },
     {
-        storeId: 'CH00001',
-        storeName: 'FPTShop',
-        sellerId: '0123456789',
-        dateRegis: '03/03/2024',
-        enable: false
+        title: 'Trạng thái',
+        dataIndex: 'enabled',
+        key: 'enabled',
+        render: value => <div>{value ? <CiCircleCheck className='text-success fs-3'/> :
+            <IoCloseCircleOutline className='text-danger fs-3'/>}</div>
     },
     {
-        storeId: 'CH00001',
-        storeName: 'FPTShop',
-        sellerId: '0123456789',
-        dateRegis: '03/03/2024',
-        enable: true
+        title: 'Ngày đăng ký',
+        dataIndex: 'createdAt',
+        key: 'createdAt'
     },
-    {
-        storeId: 'CH00001',
-        storeName: 'FPTShop',
-        sellerId: '0123456789',
-        dateRegis: '03/03/2024',
-        enable: false
-    },
-    {
-        storeId: 'CH00001',
-        storeName: 'FPTShop',
-        sellerId: '0123456789',
-        dateRegis: '03/03/2024',
-        enable: true
-    }
-]
+];
+
 export default function AdminStoreManage() {
-    return (
-        <div className="admin-store-manage">
-            <div className="search-filter">
-                <div className="search">
-                    <input type="text" placeholder='Tìm kiếm...' className="search-input"/>
-                    <IoSearch className='search-icon'/>
-                </div>
+
+    useResetManagePageState()
+
+    const {
+        isLoading,
+        data: listResponse = PageConfigs.initListResponse as ListResponse<UserResponse>
+    } =
+        useGetAllApi(ResourceUrl.STORE, "Stores")
+
+    return isLoading ? <Loading/> : <div className="admin-store-manage">
+        <div className="search-filter">
+            <div className="search">
+                <input type="text" placeholder='Tìm kiếm...' className="search-input"/>
+                <IoSearch className='search-icon'/>
             </div>
-            <table className="table">
-                <tr className="header-row">
-                    <th>ID CỬA HÀNG</th>
-                    <th>TÊN CỬA HÀNG</th>
-                    <th>ID SELLER</th>
-                    <th>NGÀY ĐĂNG KÝ</th>
-                    <th>HÀNH ĐỘNG</th>
-                </tr>
-                {storeData.map((value) => {
-                    let enaIcon;
-                    if (value.enable) {
-                        enaIcon = <FaLockOpen className="lock-icon" style={{color: 'var(--primary-color)'}}/>
-                    } else {
-                        enaIcon = <FaLock className="lock-icon" style={{color: 'red'}}/>
-                    }
-                    return <tr className="data-row">
-                        <td className="store-id">{value.storeId}</td>
-                        <td className="store-name">{value.storeName}</td>
-                        <td className="seller-id">{value.sellerId}</td>
-                        <td className="date-regis">{value.dateRegis}</td>
-                        <td className="action">
-                            <FaEdit className="edit-icon"/>
-                            {enaIcon}
-                        </td>
-                    </tr>
-                })}
-            </table>
-            <Pagination />
-            
         </div>
-    )
+        <ManageTable listResponse={listResponse}
+                     resourceUrl={ResourceUrl.STORE}
+                     resourceKey='Stores'
+                     tableHeads={columns}/>
+        <ManagePagination listResponse={listResponse}/>
+    </div>
 }

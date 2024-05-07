@@ -1,5 +1,5 @@
 import "./ClientSuperProduct.scss"
-import Banner from "../../assets/img/banner.png"
+import Banner from "../../assets/imgs/banner.png"
 export default function ClientSuperProduct() {
     return (
         <div className="wrapper-client-super-product">

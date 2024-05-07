@@ -23,7 +23,7 @@ VALUES
 		'https://res.cloudinary.com/dixswfj8d/image/upload/v1712326296/product-portal-website-images/users/myhoathuylinh.jpg', 
         1, NOW(), 1),
     (6,'vandat@gmail.com', 'vandat', 'Văn Đạt Đỗ', '0999888777',
-		'$2y$10$grM2iS94i3JJEmdVzhtzm.tY/UR4lDXCKu2RZpWy9OxG9serXXr1O', 'USER', 
+		'$2y$10$grM2iS94i3JJEmdVzhtzm.tY/UR4lDXCKu2RZpWy9OxG9serXXr1O', 'SELLER', 
         'https://res.cloudinary.com/dixswfj8d/image/upload/v1712326288/product-portal-website-images/users/vandatdo.jpg', 
         1, NOW(), 1),
     (7,'linhchi@gmail.com', 'linhchi', 'Linh Chi', '0333222111',
@@ -35,7 +35,7 @@ VALUES
 		'https://res.cloudinary.com/dixswfj8d/image/upload/v1712326305/product-portal-website-images/users/ngoquanghuy.jpg', 
         1, NOW(), 1),
     (9,'honganh@gmail.com', 'honganh', 'Hồng Anh', '0666555222',
-		'$2y$10$VqbfKioN1fdcvpA9LweMTOoDydAk46Mzrq1ui3f1ynJttdYBPqfsm', 'USER', 
+		'$2y$10$VqbfKioN1fdcvpA9LweMTOoDydAk46Mzrq1ui3f1ynJttdYBPqfsm', 'SELLER', 
         'https://res.cloudinary.com/dixswfj8d/image/upload/v1712326281/product-portal-website-images/users/honganh.jpg', 
         0, NOW(), 1),
     (10,'khanhhoa@gmail.com', 'khanhhoa', 'Khánh Hoa', '0876543210',
@@ -80,6 +80,9 @@ INSERT INTO store (id,name, url_store, user_id, created_at, created_by) VALUES
 (10,'Trị nóng store', 'https://meta.vn/quat-cac-loai-c448?ref=pmax-quat-HN&gad_source=1&gclid=CjwKCAjwt-OwBhBnEiwAgwzrUmls037gbjp9UlxeTXdJfyWFwUSyKnOZ7GKgRLHMJ931a_XPUbwNwBoCSWQQAvD_BwE',7, NOW(), 7),
 (11, 'Nữ tính store', 'https://www.ief-vn.com/', 7, NOW(), 7)
 ;
+ALTER TABLE store ADD COLUMN enabled BOOLEAN DEFAULT TRUE;
+UPDATE store SET enabled = TRUE;
+
 insert into image(store_id, url) VALUES
 (1, 'https://res.cloudinary.com/dixswfj8d/image/upload/v1712910892/product-portal-website-images/stores/logo-fpt-shop.jpg'),
 (1, 'https://res.cloudinary.com/dixswfj8d/image/upload/v1712910889/product-portal-website-images/stores/FPT%20FAKER%20SHOP%202.webp'),

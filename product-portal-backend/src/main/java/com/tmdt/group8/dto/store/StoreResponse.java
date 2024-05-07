@@ -9,5 +9,6 @@ import lombok.Setter;
 public class StoreResponse extends BaseResponse {
     private String name;
     private String urlStore;
+    private Boolean enabled;
     private StoreOwner owner;
 }

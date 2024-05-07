@@ -57,7 +57,7 @@ export default function ClientDetailProduct() {
             <main className="client-detail-product">
                 <div className="product-info">
                     <h1 className="product-name">{detailProducts.productName}</h1>
-                    <img src={require(`../../assets/img/${detailProducts.productImage}`)} alt="" className="product-img" />
+                    {/*<img src={require(`.././${detailProducts.productImage}`)} alt="" className="product-img" />*/}
                 </div>
                 <div className="product-website">
                     <h2 className="product-website-title">Gợi ý website</h2>

@@ -1,4 +1,4 @@
-import logo from '../../assets/img/logo.jpg'
+import logo from '../../assets/imgs/logo.jpg'
 import {Link} from "react-router-dom";
 import './ClientHeader.scss'
 import { IoSearch } from "react-icons/io5";

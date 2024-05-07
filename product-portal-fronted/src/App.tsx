@@ -1,13 +1,13 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom";
 
-
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import ClientHome from "./pages/client-home/ClientHome";
 import Client from "./pages/Client";
 import Admin from "./pages/Admin";
-import ClientDetailProduct from './pages/client-detail-product';
+import ClientDetailProduct from './pages/client-details-product';
 import ClientSubProduct from './pages/client-sub-product/ClientSubProduct';
 import ClientSuperProduct from './pages/client-super-product';
 import AdminUserManage from './pages/admin-user-manage';
@@ -16,6 +16,7 @@ import SignIn from './pages/sign-in';
 import SignUp from './pages/sign-up';
 import SellerProductManage from './pages/seller-product-manage/SellerProductManage';
 import Seller from './pages/Seller';
+import AdminHome from "./pages/admin-home";
 
 function App() {
     return (
@@ -29,9 +30,11 @@ function App() {
                 </Route>
 
                 <Route path='/admin' element={<Admin/>}>
-                    <Route index element={<AdminUserManage/>}/>
-                    <Route path='store' element={<AdminStoreManage/>}/>
+                    <Route index element={<AdminHome />}/>
+                    <Route path='sellers' element={<AdminUserManage/>}/>
+                    <Route path='stores' element={<AdminStoreManage/>}/>
                 </Route>
+
                 <Route path='/sign-in' element={<SignIn/>}/>
                 <Route path='/sign-up' element={<SignUp/>}/>
                 <Route path='/seller' element={<Seller/>}>

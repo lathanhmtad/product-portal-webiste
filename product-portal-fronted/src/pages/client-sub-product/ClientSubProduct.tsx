@@ -1,7 +1,7 @@
 import "./ClientSubProduct.scss"
 import { Link } from "react-router-dom"
-import Banner from "../../assets/img/banner.png"
-import Pagination from "../../components/Pagination";
+// import Banner from "../../assets/imgs/banner.png"
+// import Pagination from "../../components/Pagination";
 
 type ProductsType = {
     tag: string;
@@ -170,13 +170,13 @@ export default function ClientSubProduct() {
     return (
         <div className="wrapper-client-sub-product">
             <main className="client-sub-product">
-                <img src={Banner} alt="" className="client-sub-product-banner" />
+                {/*<img src={Banner} alt="" className="client-sub-product-banner" />*/}
                 <div className="outstanding-products">
                     <h2 className="outstanding-products-title">SẢN PHẨM NỔI BẬT</h2>
                     <div className="list-outstanding-product">
                         {outstandingProducts.map((value) => {                            
                             return <Link to={`/detail-product`} className="outstanding-product-item">
-                                <img src={require(`../../assets/img/${value.productImageName}`)} alt="" className="outstanding-product-img" />
+                                {/*<img src={require(`../../assets/img/${value.productImageName}`)} alt="" className="outstanding-product-img" />*/}
                                 <span className="outstanding-product-name">{value.productName}</span>
                             </Link>
                         })}
@@ -187,12 +187,12 @@ export default function ClientSubProduct() {
                     <div className="list-all-product">
                         {products.map((value) => {                            
                             return <Link to={value.productLink} className="all-product-item">
-                                <img src={require(`../../assets/img/${value.productImageName}`)} alt="" className="all-product-img" />
+                                {/*<img src={require(`../../assets/img/${value.productImageName}`)} alt="" className="all-product-img" />*/}
                                 <span className="all-product-name">{value.productName}</span>
                             </Link>
                         })}
                     </div>
-                    <Pagination />
+                    {/*<Pagination />*/}
                 </div>             
 
             </main>

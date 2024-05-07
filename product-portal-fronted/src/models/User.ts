@@ -1,4 +1,6 @@
-export interface User {
+import BaseResponse from "./BaseResponse";
+
+export interface UserResponse extends BaseResponse {
     id: number,
     email: string,
     avatar: string,

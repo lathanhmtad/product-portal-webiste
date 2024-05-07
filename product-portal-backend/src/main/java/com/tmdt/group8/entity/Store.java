@@ -12,7 +12,7 @@ import lombok.Setter;
 public class Store extends BaseEntity {
     private String name;
     private String urlStore;
-
+    private Boolean enabled;
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private User user;
