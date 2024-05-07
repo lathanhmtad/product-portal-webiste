@@ -4,6 +4,7 @@ import './ClientHeader.scss'
 import { IoSearch } from "react-icons/io5";
 import { FaUser } from "react-icons/fa";
 import { FaAngleDown } from "react-icons/fa";
+import UserSubNav from '../UserSubnav';
 
 export default function ClientHeader() {
     const categories: {
@@ -210,8 +211,8 @@ export default function ClientHeader() {
     return (
         <div className="wrapper-client-header">
             <ul className='client-header'>
-                <li>
-                    <Link to='/'>
+                <li className='logo-item'>
+                    <Link to='/' className='logo-link'>
                         <img src={logo} alt='logo' className='logo'/>
                     </Link>
                 </li>
@@ -220,7 +221,7 @@ export default function ClientHeader() {
                         <Link className='active' to={'/'}>Trang chủ</Link>
                     </li>
                     <li>
-                        <Link to={'/'}>Giới thiệu</Link>
+                        <Link to={'/introduce'}>Giới thiệu</Link>
                     </li>
                     <li className='categories'>
                         Danh mục sản phẩm
@@ -239,10 +240,10 @@ export default function ClientHeader() {
                         </ul>
                     </li>
                     <li>
-                        <Link to={'/'}>Seller</Link>
+                        <Link to={'/seller'}>Seller</Link>
                     </li>
                     <li>
-                        <Link to={'/'}>Liên hệ</Link>
+                        <Link to={'/contact'}>Liên hệ</Link>
                     </li>
                 </ul>
                 <li className='search'>
@@ -252,6 +253,10 @@ export default function ClientHeader() {
                 <li className='auth'>
                     <FaUser className='user-icon'/>
                     <Link to={'/sign-in'}>Đăng nhập/Đăng ký</Link>
+                    <div className="user">
+                        <img src={require(`../../assets/img/avatar.jpg`)} alt="" className="user-avatar" />                    
+                        <UserSubNav/>
+                    </div>
                 </li>
             </ul>
         </div>

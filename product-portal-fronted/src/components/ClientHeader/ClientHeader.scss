@@ -26,9 +26,16 @@
       justify-content: space-between;
       align-items: center;
     
-      .logo {
+      .logo-item {
+        display: inline-block;
         height: 60px;
-        cursor: pointer;
+        .logo-link {
+          .logo {
+            height: 100%;
+            cursor: pointer;
+            display: inline-block;
+          }
+        }
       }
     
       .sub-header {
@@ -138,6 +145,16 @@
         }
         a {
           @include anchorNavigation();
+        }
+        .user {
+          display: flex;
+          align-items: center;
+          position: relative;
+          display: none;
+          .user-avatar {
+              width: 40px;
+              border-radius: 50%;
+          }
         }
       }
     }
