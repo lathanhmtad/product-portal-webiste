@@ -23,7 +23,7 @@
     color: var(--primary-color);
 }
 .wrapper-sign-in {
-    background-image: url('../../assets/imgs/sigin-signup-background.jpg');
+    //background-image: url('img/sigin-signup-background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
@@ -116,6 +116,44 @@
             text-align: center;
             margin-top: 20px;            
             .register-link {
+                color: var(--primary-color);
+                text-decoration: none;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+        .seller-register-content {
+            display: block;
+            text-align: center;
+            span {
+                font-size: 14px;
+                color: #aaa;
+                margin: 10px 0;
+                display: block;
+                position: relative;
+                &::before {
+                    content: "";
+                    width: 170px;
+                    height: 1px;
+                    background-color: #aaa;
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+                &::after {
+                    content: "";
+                    width: 170px;
+                    height: 1px;
+                    background-color: #aaa;
+                    position: absolute;
+                    right: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+            }
+            .seller-register-link {
                 color: var(--primary-color);
                 text-decoration: none;
                 &:hover {

@@ -17,6 +17,10 @@ import SignUp from './pages/sign-up';
 import SellerProductManage from './pages/seller-product-manage/SellerProductManage';
 import Seller from './pages/Seller';
 import AdminHome from "./pages/admin-home";
+import SellerAddProduct from './pages/seller-add-product';
+import ClientSellerRegister from './pages/client-seller-register';
+import ClientIntroduce from './pages/client-introduce';
+import ClientContact from './pages/client-contact';
 
 function App() {
     return (
@@ -27,6 +31,9 @@ function App() {
                     <Route path='/sub-products' element={<ClientSubProduct/>}/>
                     <Route path='/detail-product' element={<ClientDetailProduct/>}/>
                     <Route path='/super-products' element={<ClientSuperProduct/>}/>
+                    <Route path='/seller-register' element={<ClientSellerRegister/>}/>
+                    <Route path='/introduce' element={<ClientIntroduce/>}/>
+                    <Route path='/contact' element={<ClientContact/>}/>
                 </Route>
 
                 <Route path='/admin' element={<Admin/>}>
@@ -39,6 +46,7 @@ function App() {
                 <Route path='/sign-up' element={<SignUp/>}/>
                 <Route path='/seller' element={<Seller/>}>
                     <Route index element={<SellerProductManage/>}/>
+                    <Route path='add-product' element={<SellerAddProduct/>}/>
                 </Route>
             </Routes>
         </main>
