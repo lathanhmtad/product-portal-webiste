@@ -4,6 +4,7 @@ import { FaRegSun } from "react-icons/fa";
 import { FaSignOutAlt } from "react-icons/fa";
 import "./AdminSidebar.scss"
 import { Link } from "react-router-dom";
+
 export default function AdminSidebar() {
     return (
         <div className="admin-sidebar">

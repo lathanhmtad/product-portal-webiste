@@ -28,7 +28,7 @@
     .manage {
         .manage-user {
             @include wrapperContent();
-            background-color: var(--primary-color);
+            //background-color: var(--primary-color);
             .user-icon {
                 @include icon();
             }
