@@ -74,6 +74,12 @@
             }
         }
     }
+    .ant-table-thead .ant-table-cell {
+        background-color: var(--primary-color);
+        color: white;
+        text-transform: uppercase;
+        text-align: center;
+    }
     .table {
         width: 100%;
         margin-top: 20px;
@@ -134,7 +140,7 @@
     //     bottom: 0;
     //     left: 0;
     //     right: 0;
-    //     z-index: 50;
+    //     z-index.ts: 50;
     // }
     .information-card {
         position: absolute;

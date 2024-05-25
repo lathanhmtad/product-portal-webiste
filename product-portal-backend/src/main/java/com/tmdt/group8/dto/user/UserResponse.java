@@ -15,7 +15,6 @@ public class UserResponse extends BaseResponse {
     private String username;
     private String phoneNumber;
     private String avatar;
-    private String password;
     private Boolean enabled;
     @Enumerated(EnumType.STRING)
     private RoleType role;

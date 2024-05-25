@@ -1,8 +1,10 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom";
 
-
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import {App as AppAntd} from 'antd'
 
 import ClientHome from "./pages/client-home/ClientHome";
 import Client from "./pages/Client";
@@ -23,7 +25,7 @@ import ClientContact from './pages/client-contact';
 
 function App() {
     return (
-        <main>
+        <AppAntd>
             <Routes>
                 <Route path='/' element={<Client/>}>
                     <Route index element={<ClientHome/>}/>
@@ -46,7 +48,7 @@ function App() {
                     <Route path='add-product' element={<SellerAddProduct/>}/>
                 </Route>
             </Routes>
-        </main>
+        </AppAntd>
     );
 }
 

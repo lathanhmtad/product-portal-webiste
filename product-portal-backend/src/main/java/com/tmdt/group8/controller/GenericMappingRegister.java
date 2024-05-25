@@ -99,7 +99,7 @@ public class GenericMappingRegister {
         controller.setRequestType(requestType);
 
         handlerMapping.registerMapping(
-                RequestMappingInfo.paths("/api/v1/" + resource)
+                RequestMappingInfo.paths("/api/" + resource)
                         .methods(RequestMethod.GET)
                         .produces(MediaType.APPLICATION_JSON_VALUE)
                         .options(options)
@@ -110,7 +110,7 @@ public class GenericMappingRegister {
         );
 
         handlerMapping.registerMapping(
-                RequestMappingInfo.paths("/api/v1/" + resource + "/{id}")
+                RequestMappingInfo.paths("/api/" + resource + "/{id}")
                         .methods(RequestMethod.GET)
                         .produces(MediaType.APPLICATION_JSON_VALUE)
                         .options(options)
@@ -120,7 +120,7 @@ public class GenericMappingRegister {
         );
 
         handlerMapping.registerMapping(
-                RequestMappingInfo.paths("/api/v1/" + resource)
+                RequestMappingInfo.paths("/api/" + resource)
                         .methods(RequestMethod.POST)
                         .consumes(MediaType.APPLICATION_JSON_VALUE)
                         .produces(MediaType.APPLICATION_JSON_VALUE)
@@ -131,7 +131,7 @@ public class GenericMappingRegister {
         );
 
         handlerMapping.registerMapping(
-                RequestMappingInfo.paths("/api/v1/" + resource + "/{id}")
+                RequestMappingInfo.paths("/api/" + resource + "/{id}")
                         .methods(RequestMethod.PUT)
                         .consumes(MediaType.APPLICATION_JSON_VALUE)
                         .produces(MediaType.APPLICATION_JSON_VALUE)
@@ -142,7 +142,7 @@ public class GenericMappingRegister {
         );
 
         handlerMapping.registerMapping(
-                RequestMappingInfo.paths("/api/v1/" + resource + "/{id}")
+                RequestMappingInfo.paths("/api/" + resource + "/{id}")
                         .methods(RequestMethod.DELETE)
                         .options(options)
                         .build(),
@@ -151,7 +151,7 @@ public class GenericMappingRegister {
         );
 
         handlerMapping.registerMapping(
-                RequestMappingInfo.paths("/api/v1/" + resource)
+                RequestMappingInfo.paths("/api/" + resource)
                         .methods(RequestMethod.DELETE)
                         .consumes(MediaType.APPLICATION_JSON_VALUE)
                         .options(options)

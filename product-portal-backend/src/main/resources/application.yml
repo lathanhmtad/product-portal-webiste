@@ -25,7 +25,7 @@ cloudinary:
   name: dixswfj8d
   apiKey: 876943471796471
   apiSecret: XXlwrvw541Qmp83wIgDjxZpIoNQ
-  rootFolder: quiz-website-images
+  rootFolder: product-portal-website-images
 jwt:
   jwtSecret: ======================jwt=spring===========================
   jwtExpiration: 10 hour
