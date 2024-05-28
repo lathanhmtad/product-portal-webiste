@@ -13,6 +13,7 @@ export interface ManageTableProps<T> {
     resourceUrl: string
     resourceKey: string
     entityDetailsTableRowsFragment: TableProps<T>['columns']
+    resourceName: string
     entityDetails?: (data: T) => DescriptionsProps['items']
 }
 

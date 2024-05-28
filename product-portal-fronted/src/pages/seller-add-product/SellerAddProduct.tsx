@@ -1,9 +1,151 @@
 import { FaArrowLeft, FaPlus, FaSave, FaUpload } from "react-icons/fa"
 import "./SellerAddProduct.scss"
 import { Link } from "react-router-dom"
+import {Button, Col, Form, FormProps, Input, Row, Upload} from "antd";
+import {PlusOutlined} from "@ant-design/icons";
+import {SellerRequest} from "../../models/User";
+import useSellerAddProductViewModel from "./SellerAddProduct.vm";
 export default function SellerAddProduct() {
+    const {
+        form,
+        loading,
+        handleAvatarFileChange,
+        handleOpenPreview,
+        avatarFile,
+        handleFormSubmit,
+        setLoading,
+        storeImageFiles,
+        handleChangeStoreImage
+    } = useSellerAddProductViewModel()
+
+    const onFinish: FormProps<SellerRequest>['onFinish'] = (values) => {
+        setLoading(true)
+        handleFormSubmit(values)
+    };
+
     return (
         <div className="wrapper-seller-add-product">
+            <Form
+                form={form}
+                name="seller-register"
+                className='seller-add-product'
+                onFinish={onFinish}
+                disabled={loading ? true : false}
+                autoComplete="off"
+            >
+                <span className="infor-title">THÔNG TIN SẢN PHẨM</span>
+
+                <div className="prod-information">
+                    <div className='seller-avatar' style={{width: '25%', marginRight: 24}}>
+                        <Form.Item
+                            name="avatarFile"
+                            labelCol={{span: 24}}
+                            label="Hình đại diện của bạn"
+                            rules={[{required: true, message: 'Vui lòng tải hình đại diện của bạn!'}]}
+                        >
+                            <Upload
+                                maxCount={1}
+                                fileList={avatarFile}
+                                beforeUpload={() => false}
+                                listType="picture-card"
+                                onChange={handleAvatarFileChange}
+                                onPreview={handleOpenPreview}
+                            >
+                                <button style={{border: 0, background: 'none'}} type="button">
+                                    <PlusOutlined/>
+                                    <div style={{marginTop: 8}}>Upload</div>
+                                </button>
+                            </Upload>
+                        </Form.Item>
+                    </div>
+
+                    <div style={{width: '100%'}} className="register-info-content">
+                        {/*<Form.Item<SellerRequest>*/}
+                        {/*    label="Tên sản phẩm"*/}
+                        {/*    labelCol={{span: 24}}*/}
+                        {/*    name="name"*/}
+                        {/*    rules={[{required: true, message: 'Vui lòng nhập tên sản phẩm!'}]}*/}
+                        {/*>*/}
+                        {/*    <Input/>*/}
+                        {/*</Form.Item>*/}
+
+                        <Row gutter={24}>
+                            <Col span={12}>
+                                <Form.Item<SellerRequest>
+                                    label="Email"
+                                    labelCol={{span: 24}}
+                                    name="email"
+                                    rules={[
+                                        {required: true, message: 'Vui lòng nhập email!'},
+                                        {
+                                            type: 'email',
+                                            message: 'Email không hợp lệ'
+                                        },
+                                    ]}
+                                >
+                                    <Input
+                                    />
+                                </Form.Item>
+                            </Col>
+                            <Col span={12}>
+                                <Form.Item<SellerRequest>
+                                    label="Số điện thoại"
+                                    labelCol={{span: 24}}
+                                    name="phoneNumber"
+                                    rules={[{required: true, message: 'Vui lòng nhập số điện thoại!'}]}
+                                >
+                                    <Input/>
+                                </Form.Item>
+                            </Col>
+                        </Row>
+
+                        <Form.Item<SellerRequest>
+                            label="Tên cửa hàng"
+                            labelCol={{span: 24}}
+                            name="storeName"
+                            rules={[{required: true, message: 'Vui lòng nhập tên cửa hàng!'}]}
+                        >
+                            <Input/>
+                        </Form.Item>
+
+                        <Form.Item<SellerRequest>
+                            label="Link cửa hàng"
+                            labelCol={{span: 24}}
+                            name="urlStore"
+                            rules={[{required: true, message: 'Vui lòng nhập đường dẫn cửa hàng!'}]}
+                        >
+                            <Input/>
+                        </Form.Item>
+
+                        <Form.Item
+                            name="storeImageFiles"
+                            label="Hình ảnh cửa hàng"
+                            labelCol={{span: 24}}
+                            rules={[{required: true, message: 'Vui lòng tải ít nhất một hình ảnh về cửa hàng!'}]}
+                        >
+                            <Upload
+                                multiple
+                                listType="picture-card"
+                                action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+                                fileList={storeImageFiles}
+                                beforeUpload={() => false}
+                                onChange={handleChangeStoreImage}
+                                onPreview={handleOpenPreview}
+                            >
+                                <button style={{border: 0, background: 'none'}} type="button">
+                                    <PlusOutlined/>
+                                    <div style={{marginTop: 8}}>Upload</div>
+                                </button>
+                            </Upload>
+                        </Form.Item>
+
+                        <Button type='primary' loading={loading} htmlType='submit' size='large'
+                                className="register-button">Đăng ký</Button>
+                    </div>
+                </div>
+            </Form>
+
+
             <form action="" className="seller-add-product">                
                 <span className="infor-title">THÔNG TIN SẢN PHẨM</span>
                 <div className="prod-information">

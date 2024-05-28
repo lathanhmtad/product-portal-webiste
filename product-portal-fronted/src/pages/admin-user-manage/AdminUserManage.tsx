@@ -7,7 +7,7 @@ import Pagination from "../../components/Pagination";
 import Avatar from "../../assets/img/avatar.jpg"
 import {FaXmark} from "react-icons/fa6";
 import {Image, TableProps, Tag, Tooltip} from "antd";
-import {UserResponse} from "../../models/UserResponse";
+import {UserResponse} from "../../models/User";
 import ManageTable from "../../components/ManageTable";
 import useResetManagePageState from "../../hooks/use-reset-manage-page-state";
 import useGetAllApi from "../../hooks/use-get-all-api";
@@ -204,6 +204,7 @@ export default function AdminUserManage() {
                 resourceKey={UserConfigs.resourceKey}
                 entityDetailsTableRowsFragment={entityDetailsTableRowsFragment}
                 // entityDetails={}
+                resourceName={UserConfigs.resourceName}
             />
 
             <ManagePagination listResponse={listResponse}/>

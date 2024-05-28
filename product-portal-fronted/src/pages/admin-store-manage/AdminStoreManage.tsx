@@ -7,10 +7,10 @@ import "./AdminStoreManage.scss"
 import ManageTable from "../../components/ManageTable";
 import PageConfigs from "../PageConfigs";
 import {ListResponse} from "../../utils/FetchUtils";
-import {UserResponse} from "../../models/UserResponse";
+import {UserResponse} from "../../models/User";
 import useGetAllApi from "../../hooks/use-get-all-api";
 import UserConfigs from "../admin-user-manage/UserConfigs";
-import {StoreOwner, StoreResponse} from "../../models/StoreResponse";
+import {StoreOwner, StoreResponse} from "../../models/Store";
 import StoreConfigs from "./StoreConfigs";
 import ResourceUrl from "../../constants/ResourceUrl";
 import {Image, TableProps, Tag, Tooltip} from "antd";
@@ -149,7 +149,7 @@ export default function AdminStoreManage() {
                 resourceUrl={StoreConfigs.resourceUrl}
                 resourceKey={StoreConfigs.resourceKey}
                 entityDetailsTableRowsFragment={entityDetailsTableRowsFragment}
-            />
+                resourceName={StoreConfigs.resourceName}/>
 
             <ManagePagination listResponse={listResponse}/>
 

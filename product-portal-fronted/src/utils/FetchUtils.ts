@@ -34,6 +34,10 @@ export interface ErrorMessage {
     description: string;
 }
 
+export interface ApiResponse extends ErrorMessage {
+
+}
+
 type BasicRequestParams = Record<string, string | number | null | boolean>;
 
 class FetchUtils {
@@ -291,11 +295,26 @@ class FetchUtils {
      * Hàm uploadMultipleImages dùng để tải lên nhiều tệp hình
      * @param images
      */
-    static async uploadMultipleImages(images: File[]): Promise<String[]> {
+    static async uploadMultipleImages(images: File[]): Promise<Record<string, string[]>> {
         const formData = new FormData();
         images.forEach((image) => formData.append('images', image));
 
         const response = await fetch(ApplicationConstants.API_PATH + '/images/upload-multiple', {
+            method: 'POST',
+            body: formData,
+        });
+
+        if (!response.ok) {
+            throw await response.json();
+        }
+        return await response.json();
+    }
+
+    static async uploadSingleImage(image: File): Promise<Record<string, string>> {
+        const formData = new FormData();
+        formData.append('image', image);
+
+        const response = await fetch(ApplicationConstants.API_PATH + '/images/upload-single', {
             method: 'POST',
             body: formData,
         });

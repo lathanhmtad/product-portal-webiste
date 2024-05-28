@@ -8,6 +8,13 @@ class ResourceUrl {
     static STORE = apiPath + '/stores'
 
     // Client
+    static CLIENT_SELLER_REGISTER = apiPath + '/sellers/register'
+    static CLIENT_CATEGORY = apiPath + '/categories'
+
+    static PRODUCT = apiPath + '/products'
+
+    // Auth
+    static LOGIN  = apiPath + '/auth/login'
 }
 
 export default ResourceUrl

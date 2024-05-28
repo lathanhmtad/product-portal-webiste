@@ -15,7 +15,34 @@
         border: 2px solid var(--primary-color);
     }
 }
+
+.ant-form-item {
+    margin-bottom: 12px !important;
+}
+
+.ant-form-item-label {
+    padding: 0 !important;
+}
 .wrapper-client-seller-register {
+    .seller-avatar {
+        .ant-form-item-label {
+            text-align: center;
+        }
+
+        .ant-upload-list-item-container {
+            max-height: 270px;
+            height: 100% !important;
+        }
+
+        .ant-upload-list.ant-upload-list-picture-card {
+            text-align: center;
+        }
+
+        .ant-upload-list-item-container {
+            width: 100% !important;
+        }
+    }
+
     display: flex;
     .client-seller-register {
         width: 1200px;
@@ -26,7 +53,7 @@
             color: #fff;
             display: block;
             text-transform: uppercase;
-            padding: 5px 0;
+            padding: 8px 0;
             font-size: 20px;
             font-weight: 500;
             text-align: center;
@@ -39,11 +66,12 @@
             justify-content: center;
             padding: 20px;
             .avatar {
-                width: 25%;
+                //width: 25%;
+                width: 100%;
                 object-fit: contain;
                 border: 1px solid var(--primary-color);
                 display: inline-block;
-                margin-right: 20px;
+                // margin-right: 20px;
             }
             .register-info-content {
                 display: inline-block;
@@ -93,7 +121,7 @@
         }
         .register-button {
             background-color: var(--primary-color);
-            padding: 10px 20px;
+            //padding: 10px 20px;
             border: none;
             color: #fff;
             font-size: 16px;

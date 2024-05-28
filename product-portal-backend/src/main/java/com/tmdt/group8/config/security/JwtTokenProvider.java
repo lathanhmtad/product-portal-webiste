@@ -20,7 +20,8 @@ public class JwtTokenProvider {
 
     @Value("${jwt.jwt-expiration}")
     private String jwtExpiration;
-    private String generateJwtToken(String username) {
+
+    public String generateJwtToken(String username) {
         Date currentDate = new Date();
         long jwtExpirationMs = TimeConverterUtils.getMillisecond(jwtExpiration);
 

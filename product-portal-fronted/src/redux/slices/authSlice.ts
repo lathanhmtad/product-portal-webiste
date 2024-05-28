@@ -1,17 +1,17 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {UserResponse} from "../../models/User";
 
-// import { ParticipantResponse } from '../../models/Participant';
 
 interface AuthState {
     accessToken: string | null;
-    // participant: ParticipantResponse | null;
-    refreshToken: string | null;
+    user: UserResponse | null;
+    // refreshToken: string | null;
 }
 
 const initialState: AuthState = {
     accessToken: null,
-    // participant: null,
-    refreshToken: null
+    user: null,
+    // refreshToken: null
 };
 
 export const authSlice = createSlice({
@@ -21,23 +21,29 @@ export const authSlice = createSlice({
         updateAccessToken: (state, action: PayloadAction<string>) => {
             state.accessToken = action.payload;
         },
-        updateRefreshToken: (state, action: PayloadAction<string>) => {
-            state.refreshToken = action.payload;
+        setUser: (state, action: PayloadAction<UserResponse>) => {
+            state.user = action.payload
         },
+        // updateRefreshToken: (state, action: PayloadAction<string>) => {
+        //     state.refreshToken = action.payload;
+        // },
         // updateParticipant: (state, action: PayloadAction<ParticipantResponse>) => {
         //     state.participant = action.payload;
         // },
         resetAuthState: (state) => {
             state.accessToken = null;
-            // state.participant = null;
-            state.refreshToken = null;
+            state.user = null;
+            // state.refreshToken = null;
         }
     },
 });
 
 export const {
+    resetAuthState,
     updateAccessToken,
-    // updateParticipant, updateRefreshToken, resetAuthState
-} = authSlice.actions;
+    setUser
+// updateParticipant, updateRefreshToken, resetAuthState
+}
+    = authSlice.actions;
 
 export default authSlice.reducer;

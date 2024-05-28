@@ -9,3 +9,14 @@ export interface UserResponse extends BaseResponse {
     enabled: boolean
     role: string
 }
+
+
+export interface SellerRequest {
+    fullName: string
+    email: string
+    phoneNumber: string
+    storeName: string
+    urlStore: string
+    avatar: string
+    storeImages: string[]
+}

@@ -12,6 +12,7 @@ function useManageTableViewModel<T extends BaseResponse>({
                                                              entityDetailsTableRowsFragment,
                                                              resourceUrl,
                                                              resourceKey,
+                                                             resourceName,
                                                              entityDetails
                                                          }: ManageTableProps<T>) {
 
@@ -43,7 +44,7 @@ function useManageTableViewModel<T extends BaseResponse>({
         modal.confirm(
             {
                 title: 'Xác nhận xóa',
-                content: 'Bạn chắc chắn muốn xóa đối tượng có id là ' + entityId,
+                content: `Bạn chắc chắn muốn xóa ${resourceName} có id là ${entityId}`,
                 onOk: () => {
                     void message.open({
                         key,
@@ -58,9 +59,7 @@ function useManageTableViewModel<T extends BaseResponse>({
                                 dispatch(setActivePage(activePage - 1 || 1));
                             }
                         },
-                        onError: () => {
-                            message.destroy(key)
-                        }
+                        onError: () => message.destroy(key)
                     });
                 },
                 maskClosable: true,

@@ -29,8 +29,8 @@ function App() {
             <Routes>
                 <Route path='/' element={<Client/>}>
                     <Route index element={<ClientHome/>}/>
-                    <Route path='/sub-products' element={<ClientSubProduct/>}/>
-                    <Route path='/detail-product' element={<ClientDetailProduct/>}/>
+                    <Route path='/products/categories/:id' element={<ClientSubProduct/>}/>
+                    <Route path='/detail-product/:id' element={<ClientDetailProduct/>}/>
                     <Route path='/super-products' element={<ClientSuperProduct/>}/>
                     <Route path='/seller-register' element={<ClientSellerRegister/>}/>
                     <Route path='/introduce' element={<ClientIntroduce/>}/>
@@ -43,6 +43,7 @@ function App() {
                 </Route>
                 <Route path='/sign-in' element={<SignIn/>}/>
                 <Route path='/sign-up' element={<SignUp/>}/>
+
                 <Route path='/seller' element={<Seller/>}>
                     <Route index element={<SellerProductManage/>}/>
                     <Route path='add-product' element={<SellerAddProduct/>}/>

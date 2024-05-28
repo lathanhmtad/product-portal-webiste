@@ -66,12 +66,12 @@ export interface FilterCriteria {
 }
 
 export interface Filter {
-    id: string;
-    createdAt: string;
-    updatedAt: string;
-    createdBy: number;
-    updatedBy: number;
-    name: string;
+    // id: string;
+    // createdAt: string;
+    // updatedAt: string;
+    // createdBy: number;
+    // updatedBy: number;
+    // name: string;
     sortCriteriaList: SortCriteria[];
     filterCriteriaList: FilterCriteria[];
 }

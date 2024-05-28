@@ -18,22 +18,22 @@ public class BaseEntity {
 
     @CreationTimestamp
     @Column(updatable = false, nullable = false)
-    private Date createdAt;
+    private Date createdAt = new Date();
 
-    @Column(updatable = false, nullable = false)
+    @Column(updatable = false) // nullable = false)
     private Long createdBy;
 
     private Date updatedAt;
     private Long updatedBy;
 
-    @PrePersist
-    public void onPersist() {
-        this.setCreatedBy(SecurityUtils.getCurrentUserDetails().getId());
-    }
+//    @PrePersist
+//    public void onPersist() {
+//        this.setCreatedBy(SecurityUtils.getCurrentUserDetails().getId());
+//    }
 
-    @PreUpdate
-    public void onUpdate() {
-        this.setUpdatedAt(new Date());
-        this.setUpdatedBy(SecurityUtils.getCurrentUserDetails().getId());
-    }
+//    @PreUpdate
+//    public void onUpdate() {
+//        this.setUpdatedAt(new Date());
+//        this.setUpdatedBy(SecurityUtils.getCurrentUserDetails().getId());
+//    }
 }

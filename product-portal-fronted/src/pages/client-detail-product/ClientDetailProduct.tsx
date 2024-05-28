@@ -1,5 +1,10 @@
-import { Link } from "react-router-dom"
+import {Link, useParams} from "react-router-dom"
 import "./ClientDetailProduct.scss"
+import useGetByIdApi from "../../hooks/use-get-by-id-api";
+import {ProductResponse} from "../../models/Product";
+import ResourceUrl from "../../constants/ResourceUrl";
+import {useState} from "react";
+
 const detailProducts: {
     productName: string,
     productImage: string,
@@ -52,20 +57,41 @@ const detailProducts: {
     ]
 }
 export default function ClientDetailProduct() {
+    const [product, setProduct] = useState<ProductResponse | null>(null)
+
+    const {id} = useParams()
+
+    const {isLoading} =
+        useGetByIdApi<ProductResponse>(
+            ResourceUrl.PRODUCT,
+            "products",
+            Number(id),
+            (productRes) => {
+                setProduct(productRes)
+            }
+        )
+
     return (
         <div className="wrapper-client-detail-product">
             <main className="client-detail-product">
                 <div className="product-info">
-                    <h1 className="product-name">{detailProducts.productName}</h1>
-                    <img src={require(`../../assets/img/${detailProducts.productImage}`)} alt="" className="product-img" />
+                    <h1 className="product-name">{product?.name}</h1>
+                    {/*<img src={require(`../../assets/img/${detailProducts.productImage}`)} alt=""*/}
+                    {/*     className="product-img"/>*/}
+                    <div className='d-flex align-items-center gap-3'>
+                        {product?.productImages.map((item, index) => <img style={{width: '200px'}} key={index}
+                                                                          src={item} alt=""
+                                                                          className="product-img"/>)}
+                    </div>
                 </div>
                 <div className="product-website">
                     <h2 className="product-website-title">Gợi ý website</h2>
                     <div className="product-website-list">
-                        {detailProducts.productWebsite.map((value) => {
+                        {product?.productUrls.map((value) => {
                             return <div className="product-website-item">
-                                <span className="product-website-name">{value.productWebsiteName}: </span>
-                                <Link target="_blank" to={value.productWebsiteLink} className="product-website-link">{value.productWebsiteLink}</Link>
+                                <span className="product-website-name">{product?.storeOwner.name}: </span>
+                                <Link target="_blank" to={value}
+                                      className="product-website-link">{value}</Link>
                             </div>
                         })}
                     </div>
@@ -76,7 +102,8 @@ export default function ClientDetailProduct() {
                         {detailProducts.productRelative.map((value) => {
                             return <div className="product-relative-item">
                                 <span className="product-relative-name">{value.productRelativeName}: </span>
-                                <Link target="_blank" to={value.productRelativeLink} className="product-relative-link">{value.productRelativeLink}</Link>
+                                <Link target="_blank" to={value.productRelativeLink}
+                                      className="product-relative-link">{value.productRelativeLink}</Link>
                             </div>
                         })}
                     </div>

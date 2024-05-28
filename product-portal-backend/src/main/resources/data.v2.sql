@@ -45,26 +45,31 @@ VALUES
 ;
 
 INSERT INTO category (id, name, image, parent_id, enabled, created_at, created_by) VALUES
-(1,'Đồ điện tử', '', NULL, 1, NOW(), 1),
-(2,'Thời trang', '', NULL, 1, NOW(), 1),
-(3,'Thiết bị gia dụng', '', NULL, 1, NOW(), 1),
-(4,'Sách', '', NULL, 1, NOW(), 1),
+(1,'Điện thoại di động', '', NULL, 1, NOW(), 1),
+(2,'Thời trang nam', '', NULL, 1, NOW(), 1),
+(3,'Thời trang nữ', '', NULL, 1, NOW(), 1),
+(4,'Thiết bị gia dụng', '', NULL, 1, NOW(), 1),
+(5,'Sách', '', NULL, 1, NOW(), 1),
+(6,'Máy tính bảng', '', NULL, 1, NOW(), 1),
+(7,'Tivi', '', NULL, 1, NOW(), 1),
+(8,'Tai nghe', '', NULL, 1, NOW(), 1)
+
 -- Subcategories for 'Đồ điện tử'
-(5, 'Điện thoại di động', '', 1, 1, NOW(), 1),
-(6, 'Máy tính bảng', '', 1, 1, NOW(), 1),
--- Subcategories for 'Thời trang'
-(7, 'Quần áo nam', '', 2, 1, NOW(), 1),
-(8, 'Quần áo nữ', '', 2, 1, NOW(), 1),
--- Subcategories for 'Thiết bị gia dụng'
-(9, 'Máy giặt', '', 3, 1, NOW(), 1),
-(10, 'Tủ lạnh', '', 3, 1, NOW(), 1),
--- Subcategories for 'Sách'
-(11, 'Sách kỹ năng sống', '', 4, 1, NOW(), 1),
-(12, 'Sách tiểu thuyết', '', 4, 1, NOW(), 1),
--- Level 2 subcategories for 'Điện thoại di động'
-(13, 'Điện thoại cảm ứng', '', 5, 1, NOW(), 1),
-(14, 'Điện thoại cục gạch', '', 5, 1, NOW(), 1),
-(15, 'Áo sơ mi nam', '', 7, 1, NOW(), 1)
+-- (5, 'Điện thoại di động', '', 1, 1, NOW(), 1),
+-- (6, 'Máy tính bảng', '', 1, 1, NOW(), 1),
+-- -- Subcategories for 'Thời trang'
+-- (7, 'Quần áo nam', '', 2, 1, NOW(), 1),
+-- (8, 'Quần áo nữ', '', 2, 1, NOW(), 1),
+-- -- Subcategories for 'Thiết bị gia dụng'
+-- (9, 'Máy giặt', '', 3, 1, NOW(), 1),
+-- (10, 'Tủ lạnh', '', 3, 1, NOW(), 1),
+-- -- Subcategories for 'Sách'
+-- (11, 'Sách kỹ năng sống', '', 4, 1, NOW(), 1),
+-- (12, 'Sách tiểu thuyết', '', 4, 1, NOW(), 1),
+-- -- Level 2 subcategories for 'Điện thoại di động'
+-- (13, 'Điện thoại cảm ứng', '', 5, 1, NOW(), 1),
+-- (14, 'Điện thoại cục gạch', '', 5, 1, NOW(), 1),
+-- (15, 'Áo sơ mi nam', '', 7, 1, NOW(), 1)
 ;
 
 INSERT INTO store (id,name, url_store, user_id, created_at, created_by) VALUES
@@ -103,54 +108,54 @@ insert into image(store_id, url) VALUES
 ;
 
 INSERT INTO product (id, name, price, slug, category_id, store_id, created_at, created_by) VALUES
-(1,'Smart Tivi Samsung Crystal UHD 4K 55 inch', 8390000, 'smart-tivi-samsung-crystal-uhd-4k-55-inch', 1, 1, NOW(), 5),
+(1,'Smart Tivi Samsung Crystal UHD 4K 55 inch', 8390000, 'smart-tivi-samsung-crystal-uhd-4k-55-inch', 7, 1, NOW(), 5),
 (2,'Tai nghe chụp tai (Không dây) Sony WH-1000XM4 - Chính hãng', 4990000, 
-	'tai-nghe-khong-day-chong-on-sony-wh-1000xm4-chinh-hang', 1, 1, NOW(), 5),
-(3,'Máy tính bảng iPad Pro M2', 28590000, 'may-tinh-bang-ipad-pro-m2', 6, 1, NOW(), 5),
-(4,'Iphone 14 pro max', 34500000, 'iphone-14-pro-max', 13, 5, NOW(), 5),
-(5,'Iphone xs max', 11200000, 'iphone-xs-max', 13, 5, NOW(), 5),
-(6,'NUBIA RED MAGIC 6S', 31250000, 'nubia-red-magic-6s', 13, 9, NOW(), 5),
+	'tai-nghe-khong-day-chong-on-sony-wh-1000xm4-chinh-hang', 8, 1, NOW(), 5),
+(3,'Máy tính bảng iPad Pro M2', 28590000, 'may-tinh-bang-ipad-pro-m2', 6, 5, NOW(), 5),
+(4,'Iphone 14 pro max', 34500000, 'iphone-14-pro-max', 1, 5, NOW(), 5),
+(5,'Iphone xs max', 11200000, 'iphone-xs-max', 1, 5, NOW(), 5),
+(6,'NUBIA RED MAGIC 6S', 31250000, 'nubia-red-magic-6s', 1, 9, NOW(), 5),
 
 (7,'Áo Polo Nam Premium Tay Ngắn Phối Viền Cổ Form Fitted', 638000, 
-	'ao-polo-nam-premium-tay-ngan-phoi-vien-co-form-fitted', 7, 2, NOW(), 7),
+	'ao-polo-nam-premium-tay-ngan-phoi-vien-co-form-fitted', 2, 2, NOW(), 7),
 (8,'Combo 2 Quần Lót Nam Trơn Form Brief', 738000, 
-	'combo-2-quan-lot-nam-tron-form-brief', 7, 2, NOW(), 7),
+	'combo-2-quan-lot-nam-tron-form-brief', 2, 2, NOW(), 7),
 (9,'Quần Short Thể Thao Nam Ống Rộng Phối Viền Form Straight', 1200000, 
-	'quan-short-the-thao-nam-ong-rong-phoi-vien-form-straight', 7, 2, NOW(), 7),
+	'quan-short-the-thao-nam-ong-rong-phoi-vien-form-straight', 2, 2, NOW(), 7),
 (10,'Quần Lót Nữ Trơn Không Đường May', 94000, 
-	'quan-lot-nu-tron-khong-duong-may', 8, 11, NOW(), 7),
+	'quan-lot-nu-tron-khong-duong-may', 3, 11, NOW(), 7),
 (11,'Đồ Bơi Bikini Nữ 2 Mảnh Cổ Yếm Cạp Thấp Nylon Trơn', 497000, 
-	'do-boi-bikini-nu-2-manh-co-yem-cap-thap-nylon-trơn', 8, 11, NOW(), 7),
+	'do-boi-bikini-nu-2-manh-co-yem-cap-thap-nylon-trơn', 3, 11, NOW(), 7),
 (12,'Chân Váy Chữ A Nữ Mini Vải Tweed Trơn Form A Line', 567000, 
-	'chan-vay-chu-a-nu-mini-vai-tweed-tron-form-a-line', 8, 11, NOW(), 7),
+	'chan-vay-chu-a-nu-mini-vai-tweed-tron-form-a-line', 3, 11, NOW(), 7),
 (13,'Suy Nghĩ Của Người Giàu - Steve Siebold', 2500000, 
-	'suy-nghi-cua-nguoi-giau-steve-siebold', 12, 6, NOW(), 7),
+	'suy-nghi-cua-nguoi-giau-steve-siebold', 5, 6, NOW(), 7),
 (14,'Think And Grow Rich - Nghĩ Giàu Và Làm Giàu', 1550000, 
-	'think-and-grow-rich-nghi-giau-va-lam-giau', 12, 6, NOW(), 7),
+	'think-and-grow-rich-nghi-giau-va-lam-giau', 5, 6, NOW(), 7),
     
 (15,'Cây Cam Ngọt Của Tôi', 84200, 
-	'cay-cam-ngot-cua-toi', 12, 3, NOW(), 8),
+	'cay-cam-ngot-cua-toi', 5, 3, NOW(), 8),
 (16,'Một Đời Được Mất', 101200, 
-	'mot-doi-duoc-mat', 11, 3, NOW(), 8),
+	'mot-doi-duoc-mat', 5, 3, NOW(), 8),
 (17,'Nói Chuyện Là Bản Năng, Giữ Miệng Là Tu Dưỡng, Im Lặng Là Trí Tuệ (Tái Bản)', 137970, 
-	'noi-chuyen-la-ban-nang-giu-mieng-la-tu-duong-im-lang-la-tri-tue', 11, 3, NOW(), 8),
+	'noi-chuyen-la-ban-nang-giu-mieng-la-tu-duong-im-lang-la-tri-tue', 5, 3, NOW(), 8),
 (18,'Di Động NOKIA 105', 359000, 
-	'di-dong-nokia-105', 14, 7, NOW(), 8),
+	'di-dong-nokia-105', 1, 7, NOW(), 8),
 (19,'Di Động NOKIA 110 4G Pro Tím', 460000, 
-	'di-dong-nokia-110-4g-tim', 14, 7, NOW(), 8),
+	'di-dong-nokia-110-4g-tim', 1, 7, NOW(), 8),
     
 (20,'Máy Hút Bụi và Thổi Bụi 12 Lít YILI YL6263A', 995000, 
-	'may-hut-bui-12-lit-yili-yl6263a', 3 , 4, NOW(), 10),
+	'may-hut-bui-12-lit-yili-yl6263a', 4 , 4, NOW(), 10),
 (21,'Máy chà sàn Super Clean SC-002', 7900000, 
-	'may-cha-san-cong-nghiep-super-clean-sc-002', 3 , 4, NOW(), 10),
+	'may-cha-san-cong-nghiep-super-clean-sc-002', 4 , 4, NOW(), 10),
 (22,'Tủ lạnh Samsung Inverter 488 lít Multi Door RF48A4010B4/SV', 21490000, 
-	'tu-lanh-samsung-inverter-488-lit-multi-door-rf48a4010b4-sv', 10 , 4, NOW(), 10),
+	'tu-lanh-samsung-inverter-488-lit-multi-door-rf48a4010b4-sv', 4 , 4, NOW(), 10),
 (23,'Tủ lạnh Side by Side Bosch EUC.KAD93VBFP', 62500000, 
-	'tu-lanh-side-by-side-bosch-euckad93vbfp', 10 , 4, NOW(), 10),
+	'tu-lanh-side-by-side-bosch-euckad93vbfp', 4 , 4, NOW(), 10),
 (24,'Máy giặt cửa ngang 10kg UltimateCare 100 - Trắng', 9490000, 
-	'may-giat-cua-ngang-10kg-ultimatecare-100-trang', 9 , 8, NOW(), 10),
+	'may-giat-cua-ngang-10kg-ultimatecare-100-trang', 4 , 8, NOW(), 10),
 (25,'Máy giặt sấy 8/5kg UltimateCare 900 - Trắng', 16290000, 
-	'may-giat-say-8/5kg-ulimatecare-900', 9 , 8, NOW(), 10)
+	'may-giat-say-8/5kg-ulimatecare-900', 4 , 8, NOW(), 10)
 ;
 INSERT INTO image (product_id, url) VALUES
 (1, 'https://res.cloudinary.com/dixswfj8d/image/upload/v1712914633/product-portal-website-images/products/Smart%20LED%20TV%2042%201.webp'),

@@ -15,11 +15,10 @@ public class ImageServiceImpl implements ImageService {
     @Override
     public String store(MultipartFile file) {
         try {
-            cloudinary.upload(file, "general");
+            return cloudinary.upload(file, "general");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        return null;
     }
 
     @Override

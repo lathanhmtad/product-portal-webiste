@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -21,13 +22,13 @@ public class ImageController {
     private ImageService imageService;
 
     @PostMapping("/upload-single")
-    public ResponseEntity<String> upload(@RequestParam("image") MultipartFile file) {
-        return ResponseEntity.ok(imageService.store(file));
+    public ResponseEntity<Map<String, String>> upload(@RequestParam("image") MultipartFile file) {
+        return ResponseEntity.ok(Map.of("imageUrl", imageService.store(file)));
     }
 
     @PostMapping("/upload-multiple")
-    public ResponseEntity<List<String>> uploads(@RequestParam("images") MultipartFile[] file) {
+    public ResponseEntity<Map<String, List<String>>> uploads(@RequestParam("images") MultipartFile[] file) {
         List<String> urls = Stream.of(file).map(imageService::store).collect(Collectors.toList());
-        return ResponseEntity.ok(urls);
+        return ResponseEntity.ok(Map.of("imageUrls", urls));
     }
 }
