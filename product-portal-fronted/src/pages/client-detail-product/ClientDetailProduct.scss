@@ -1,70 +1,72 @@
 .wrapper-client-detail-product {
     .client-detail-product {
-        width: 1200px;
+        width: 1140px;
         margin: 0 auto;
         //display: flex;
         flex-wrap: wrap;
         align-items: center;
         padding: 30px 30px;
+
         .product-info {
-            .product-name {
-                font-weight: 500;
-            }
+            display: flex;
+
             .product-img {
-                position: relative;
-                left: 50%;
-                transform: translateX(-50%);
+                width: 250px;
+                height: 250px;
+                object-fit: cover;
                 background-color: #fff;
                 padding: 15px;
                 border-radius: 25px;
                 border: 3px solid var(--primary-color);
                 margin-top: 10px;
             }
-        }
-        .product-website {
 
-            .product-website-title {
-                font-weight: 500;
-                margin-bottom: 20px;
-                padding-bottom: 5px;
-                position: relative;
-                &::before {
-                    content: '';
-                    width: 100%;
-                    height: 2px;
-                    background-color: #ccc;
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                }
-                &::after {
-                    content: '';
-                    width: 22%;
-                    height: 2px;
-                    background-color: var(--primary-color);
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                }
-            }
-            .product-website-list {
-                .product-website-item {
-                    line-height: 25px;
-                    .product-website-name {
+            .product-website {
+                margin: 20px 0 0 20px;
+
+                .product-website-list {
+
+                    .product-name {
                         font-weight: 500;
-                        font-size: 17px;
+                        margin-bottom: 20px;
                     }
-                    .product-website-link {
-                        font-size: 17px;
-                        color: var(--primary-color);
+
+                    .product-website-item {
+                        line-height: 25px;
+
+                        .product-website-name {
+                            font-weight: bolder;
+                            font-size: 17px;
+                            display: block;
+                        }
+
+                        .product-website-link {
+                            font-weight: bold;
+                            font-size: 17px;
+                            display: block;
+
+                            a {
+                                font-size: 17px;
+                                color: var(--primary-color);
+                                font-weight: normal;
+                            }
+                        }
+
+                        .product-price {
+                            font-weight: bolder;
+                            font-size: 17px;
+                            display: block;
+                        }
                     }
                 }
             }
         }
+
         .product-relative {
             width: 100%;
             background-color: var(--lighter-green-color);
             margin-top: 30px;
+
             .product-relative-title {
                 text-align: center;
                 background-color: var(--primary-color);
@@ -72,14 +74,18 @@
                 padding: 5px 0;
                 font-weight: 500;
             }
+
             .product-relative-list {
                 padding: 0 0 20px 20px;
+
                 .product-relative-item {
                     line-height: 30px;
+
                     .product-relative-name {
                         font-weight: 500;
                         font-size: 17px;
                     }
+
                     .product-relative-link {
                         color: var(--primary-color);
                         font-size: 17px;

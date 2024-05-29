@@ -3,21 +3,49 @@
     margin-bottom: 5px;
     font-weight: 500;
 }
+
 @mixin inputStyle {
     display: inline-block;
     height: 45px;
     outline: 1px solid #ccc;
     border: none;
     padding-left: 10px;
-    width: 100%;    
+    width: 100%;
+
     &:focus {
         border: 2px solid var(--primary-color);
     }
 }
-.wrapper-seller-add-product { 
+
+.wrapper-seller-add-product {
+    .back-to-index {
+        color: #fff;
+        font-size: 16px;
+        text-decoration: none;
+        margin: 20px 0 0 28px;
+        display: inline-flex;
+        padding: 5px 10px;
+        align-items: center;
+        border-radius: 10px;
+        font-weight: 500;
+        background-color: #1677FF;
+        border: 2px solid #fff;
+
+        &:hover {
+            border-color: #1677FF;
+            background-color: #fff;
+            color: #1677FF;
+        }
+
+        .back-icon {
+            margin-right: 5px;
+        }
+    }
+
     .seller-add-product {
         min-width: 1200px;
         padding: 30px;
+
         .infor-title {
             display: block;
             text-align: center;
@@ -27,18 +55,21 @@
             font-size: 20px;
             font-weight: 500;
         }
+
         .prod-information {
             border: 3px solid var(--primary-color);
             display: flex;
             align-items: center;
             //justify-content: space-between;
             padding: 30px;
+
             .prod-img-wrapper {
                 position: relative;
                 width: 20%;
                 background-color: #fff;
                 padding: 20px;
                 border: 2px solid var(--primary-color);
+
                 .upload-img-label {
                     cursor: pointer;
                     position: absolute;
@@ -52,41 +83,52 @@
                     bottom: 20px;
                     z-index: 1;
                     transition: 0.3s;
+
                     &:hover {
                         background-color: var(--primary-color);
                         color: #fff;
                     }
+
                     .upload-icon {
                         margin-right: 5px;
                     }
                 }
+
                 #prod-img {
                     width: 100%;
                     object-fit: cover;
                     opacity: 0;
                 }
+
                 #prod-img-upload-input {
                     display: none;
                 }
             }
+
             .prod-infor-content {
                 width: calc(80% - 60px);
+
                 .prod-name-wrapper {
                     display: inline-block;
                     width: 100%;
+
                     .prod-name-label {
                         @include lableStyle();
                     }
-                    #prod-name-input {  
+
+                    #prod-name-input {
                         @include inputStyle();
                     }
                 }
+
                 .category-name-wrapper {
                     display: inline-block;
                     width: 30%;
+
                     .category-name-label {
                         @include lableStyle();
                     }
+
                     #category {
                         height: 45px;
                         width: 90%;
@@ -94,35 +136,41 @@
                         border: none;
                         outline: 1px solid #ccc;
                         cursor: pointer;
-                        option {
-    
-                        }
+
+                        option {}
                     }
                 }
+
                 .prod-link-wrapper {
                     display: inline-block;
                     width: 70%;
                     margin-top: 10px;
+
                     .prod-link-label {
                         @include lableStyle();
                     }
+
                     #prod-link-input {
                         @include inputStyle();
                     }
                 }
+
                 .note-wrapper {
                     display: inline-block;
                     width: 100%;
                     margin-top: 10px;
+
                     .note-label {
                         @include lableStyle();
                     }
+
                     #note-input {
                         @include inputStyle();
                     }
                 }
             }
         }
+
         .prod-relation-title {
             display: block;
             text-align: center;
@@ -132,31 +180,40 @@
             font-weight: 700;
             margin: 30px 0 5px 0;
         }
-        .prod-relation {      
-            background-color: #fff;  
-            padding: 20px;    
+
+        .prod-relation {
+            background-color: #fff;
+            padding: 20px;
+
             .prod-relation-infor-row {
                 display: flex;
+
                 .prod-relation-name-wrapper {
                     width: 50%;
                     padding-right: 20px;
+
                     .prod-relation-name-label {
                         @include lableStyle();
                     }
+
                     #prod-relation-name-input {
                         @include inputStyle();
                     }
                 }
+
                 .prod-relation-link-wrapper {
                     width: 50%;
+
                     .prod-relation-link-label {
                         @include lableStyle();
                     }
+
                     #prod-relation-link-input {
                         @include inputStyle();
                     }
                 }
             }
+
             .add-product-button {
                 display: flex;
                 align-items: center;
@@ -169,17 +226,21 @@
                 font-weight: 600;
                 cursor: pointer;
                 transition: 0.3s;
+
                 &:hover {
                     opacity: 0.8;
                 }
+
                 .plus-icon {
                     margin-left: 10px;
                 }
             }
         }
+
         .save-cancel {
             display: flex;
             justify-content: end;
+
             .save-button {
                 display: flex;
                 align-items: center;
@@ -192,13 +253,16 @@
                 font-weight: 600;
                 cursor: pointer;
                 transition: 0.3s;
+
                 &:hover {
                     opacity: 0.8;
                 }
+
                 .save-icon {
                     margin-left: 10px;
                 }
             }
+
             .cancel-button {
                 display: flex;
                 align-items: center;
@@ -212,9 +276,11 @@
                 font-weight: 700;
                 cursor: pointer;
                 transition: 0.3s;
+
                 &:hover {
                     opacity: 0.8;
                 }
+
                 .cancel-icon {
                     margin-left: 10px;
                 }

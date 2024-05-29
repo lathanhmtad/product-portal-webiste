@@ -1,11 +1,12 @@
 import { FaArrowLeft, FaPlus, FaSave, FaUpload } from "react-icons/fa"
 import "./SellerAddProduct.scss"
 import { Link } from "react-router-dom"
-import {Button, Col, Form, FormProps, Input, InputNumber, Row, Select, Upload} from "antd";
-import {PlusOutlined} from "@ant-design/icons";
-import {SellerRequest} from "../../models/User";
+import { Button, Col, Form, FormProps, Input, InputNumber, Row, Select, Upload } from "antd";
+import { PlusOutlined } from "@ant-design/icons";
+import { SellerRequest } from "../../models/User";
 import useSellerAddProductViewModel from "./SellerAddProduct.vm";
-import {ProductRequest} from "../../models/Product";
+import { ProductRequest } from "../../models/Product";
+import { IoReturnUpBackOutline } from "react-icons/io5";
 export default function SellerAddProduct() {
     const {
         form,
@@ -25,6 +26,10 @@ export default function SellerAddProduct() {
 
     return (
         <div className="wrapper-seller-add-product">
+            <Link to='/seller' className="back-to-index">
+                <IoReturnUpBackOutline className="back-icon" />
+                Trở lại
+            </Link>
             <Form
                 form={form}
                 name="seller-register"
@@ -36,15 +41,15 @@ export default function SellerAddProduct() {
                 <span className="infor-title">THÔNG TIN SẢN PHẨM</span>
 
                 <div className="prod-information">
-                    <div style={{width: '100%'}} className="register-info-content">
+                    <div style={{ width: '100%' }} className="register-info-content">
                         <Row gutter={24}>
                             <Col span={16}>
                                 <Form.Item<ProductRequest>
                                     label="Tên sản phẩm"
-                                    labelCol={{span: 24}}
+                                    labelCol={{ span: 24 }}
                                     name="name"
                                     rules={[
-                                        {required: true, message: 'Vui lòng nhập tên sản phẩm!'},
+                                        { required: true, message: 'Vui lòng nhập tên sản phẩm!' },
                                     ]}
                                 >
                                     <Input
@@ -54,11 +59,11 @@ export default function SellerAddProduct() {
                             <Col span={8}>
                                 <Form.Item<ProductRequest>
                                     label="Giá"
-                                    labelCol={{span: 24}}
+                                    labelCol={{ span: 24 }}
                                     name="price"
-                                    rules={[{required: true, message: 'Vui lòng nhập giá sản phẩm!'}]}
+                                    rules={[{ required: true, message: 'Vui lòng nhập giá sản phẩm!' }]}
                                 >
-                                    <InputNumber style={{width: '100%'}} addonAfter="VND" defaultValue={0} />
+                                    <InputNumber style={{ width: '100%' }} addonAfter="VND" defaultValue={0} />
                                 </Form.Item>
                             </Col>
                         </Row>
@@ -67,9 +72,9 @@ export default function SellerAddProduct() {
                             <Col span={8}>
                                 <Form.Item<ProductRequest>
                                     label="Danh mục sản phẩm"
-                                    labelCol={{span: 24}}
+                                    labelCol={{ span: 24 }}
                                     name="categoryId"
-                                    rules={[{required: true, message: 'Vui lòng chọn danh sản phẩm!'}]}
+                                    rules={[{ required: true, message: 'Vui lòng chọn danh sản phẩm!' }]}
                                 >
                                     <Select
                                         style={{ width: '100%' }}
@@ -80,9 +85,9 @@ export default function SellerAddProduct() {
                             <Col span={16}>
                                 <Form.Item<ProductRequest>
                                     label="Link sản phẩm"
-                                    labelCol={{span: 24}}
+                                    labelCol={{ span: 24 }}
                                     name="productUrl"
-                                    rules={[{required: true, message: 'Vui lòng nhập đường dẫn sản phẩm!'}]}
+                                    rules={[{ required: true, message: 'Vui lòng nhập đường dẫn sản phẩm!' }]}
                                 >
                                     <Input />
                                 </Form.Item>
@@ -92,8 +97,8 @@ export default function SellerAddProduct() {
                         <Form.Item
                             name="productImageFiles"
                             label="Hình ảnh sản phẩm"
-                            labelCol={{span: 24}}
-                            rules={[{required: true, message: 'Vui lòng tải ít nhất một hình ảnh về sản phẩm!'}]}
+                            labelCol={{ span: 24 }}
+                            rules={[{ required: true, message: 'Vui lòng tải ít nhất một hình ảnh về sản phẩm!' }]}
                         >
                             <Upload
                                 multiple
@@ -104,15 +109,15 @@ export default function SellerAddProduct() {
                                 onChange={handleChangeProductImage}
                                 onPreview={handleOpenPreview}
                             >
-                                <button style={{border: 0, background: 'none'}} type="button">
-                                    <PlusOutlined/>
-                                    <div style={{marginTop: 8}}>Upload</div>
+                                <button style={{ border: 0, background: 'none' }} type="button">
+                                    <PlusOutlined />
+                                    <div style={{ marginTop: 8 }}>Upload</div>
                                 </button>
                             </Upload>
                         </Form.Item>
 
-                        <Button style={{marginTop: '8px'}} type='primary' loading={loading} htmlType='submit' size='large'
-                                className="register-button">Thêm mới</Button>
+                        <Button style={{ marginTop: '8px' }} type='primary' loading={loading} htmlType='submit' size='large'
+                            className="register-button">Thêm mới</Button>
                     </div>
                 </div>
             </Form>
@@ -177,6 +182,6 @@ export default function SellerAddProduct() {
             {/*        </Link>*/}
             {/*    </div>*/}
             {/*</form>*/}
-        </div> 
+        </div>
     )
 }

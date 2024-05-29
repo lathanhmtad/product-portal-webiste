@@ -1,5 +1,5 @@
-import {Pagination} from 'antd';
-import {ListResponse} from '../../utils/FetchUtils';
+import { Pagination } from 'antd';
+import { ListResponse } from '../../utils/FetchUtils';
 import useManagePaginationViewModel from './ManagePagination.vm';
 
 interface ManagePaginationProps {
@@ -7,11 +7,12 @@ interface ManagePaginationProps {
 }
 
 function ManagePagination({
-                              listResponse,
-                          }: ManagePaginationProps) {
+    listResponse,
+}: ManagePaginationProps) {
 
     const {
         activePage,
+        activePageSize,
         handlePaginationButton
     } = useManagePaginationViewModel()
 
@@ -21,7 +22,7 @@ function ManagePagination({
                 current={activePage}
                 onChange={handlePaginationButton}
                 total={listResponse.totalElements}
-                pageSize={5}
+                pageSize={activePageSize}
             />
         </div>
     )

@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/sellers")
 @AllArgsConstructor
 @RestController
-public class ClientSellerController {
+public class ClientSellerController {   
     private UserRepo userRepo;
     private StoreRepo storeRepo;
     private ImageRepo imageRepo;
