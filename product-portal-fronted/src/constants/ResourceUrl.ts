@@ -6,11 +6,14 @@ class ResourceUrl {
     // Admin
     static USER = apiPath + '/users'
     static STORE = apiPath + '/stores'
+    static ACTIVE_SELLER = apiPath + '/sellers/active'
 
     // Client
     static CLIENT_SELLER_REGISTER = apiPath + '/sellers/register'
     static CLIENT_SELLER_ADD_PRODCUT = apiPath + '/sellers/add-product'
     static CLIENT_SELLER_UPDATE_PRODUCT = apiPath + '/sellers/update-product'
+
+
     static CLIENT_CATEGORY = apiPath + '/categories'
 
     static PRODUCT = apiPath + '/products'

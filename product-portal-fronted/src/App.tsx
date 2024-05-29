@@ -23,6 +23,7 @@ import ClientSellerRegister from './pages/client-seller-register';
 import ClientIntroduce from './pages/client-introduce';
 import ClientContact from './pages/client-contact';
 import SellerUpdateProduct from "./pages/seller-update-product";
+import ClientResultSearch from "./pages/client-result-search";
 
 function App() {
     return (
@@ -36,6 +37,7 @@ function App() {
                     <Route path='/seller-register' element={<ClientSellerRegister/>}/>
                     <Route path='/introduce' element={<ClientIntroduce/>}/>
                     <Route path='/contact' element={<ClientContact/>}/>
+                    <Route path='/result-search' element={<ClientResultSearch/>}/>
                 </Route>
 
                 <Route path='/admin' element={<Admin/>}>

@@ -27,7 +27,21 @@ public class ClientSellerController {
     private CategoryRepo categoryRepo;
     private PasswordEncoder passwordEncoder;
     private UrlProductRepo urlProductRepo;
-    private CloudinaryUtils cloudinary;
+
+    @PutMapping("/active/{sellerId}")
+    public ResponseEntity<ApiResponse> activeSeller(@PathVariable("sellerId") Long uId2,
+                                                    @RequestBody Long uId) {
+        User u = userRepo.findById(uId).get();
+
+        u.setEnabled(true);
+
+        userRepo.save(u);
+
+        return ResponseEntity.ok(ApiResponse.builder().statusCode(200).message("Kích hoạt thành công").build());
+
+    }
+
+
     @PostMapping("/register")
     public ResponseEntity<ApiResponse> sellerRegister(@RequestBody SellerRegisterRequest registerRequest) {
         try {
