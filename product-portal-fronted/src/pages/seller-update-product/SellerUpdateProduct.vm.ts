@@ -44,7 +44,6 @@ function useSellerUpdateProductViewModel() {
     const queryClient = useQueryClient();
 
     const [productImageFiles, setProductImageFiles] = useState<UploadFile[]>([])
-    const [newProductImageFiles, setNewProductImageFiles] = useState<UploadFile[]>([])
 
     const [categorySelectList, setCategorySelectList] = useState<SelectOption[]>([])
 
@@ -60,23 +59,22 @@ function useSellerUpdateProductViewModel() {
                 url: value,
             }))
 
-            const formValues: ProductRequest = {
-                name: productResponse.name,
-                price: Number(productResponse.price),
-                productUrl: productResponse.productUrls[0],
-                categoryId: productResponse.categoryId,
-                productImages: [],
-                userId: user?.id ? user.id : 1
-
-            };
-            form.setFieldsValue(formValues)
+            // const formValues: ProductRequest = {
+            //     name: productResponse.name,
+            //     price: Number(productResponse.price),
+            //     productUrl: productResponse.productUrls[0],
+            //     categoryId: productResponse.categoryId,
+            //     productImages: [],
+            //     userId: user?.id ? user.id : 1
+            //
+            // };
             setProductImageFiles(fileList)
-            form.setFieldValue("productImageFiles", fileList)
+            // form.setFieldsValue(formValues)
             // form.setFieldValue("categoryId", {
             //     label: productResponse.category,
             //     value: productResponse.categoryId
             // })
-            form.setFieldValue("categoryId", productResponse.categoryId)
+            // form.setFieldValue("categoryId", productResponse.categoryId)
         }
     );
 
@@ -95,7 +93,7 @@ function useSellerUpdateProductViewModel() {
     const updateApi = useUpdateApi<ProductRequest, ApiResponse>(ResourceUrl.CLIENT_SELLER_UPDATE_PRODUCT, "products", Number(id));
 
     const uploadMultipleImagesApi = useUploadMultipleImagesApi()
-    const uploadSingleImageApi = useUploadSingleImageApi()
+
 
     const handleChangeProductImage: UploadProps['onChange'] = ({fileList: newFileList}) => {
         setProductImageFiles(newFileList);
@@ -137,7 +135,6 @@ function useSellerUpdateProductViewModel() {
         const filesToUpload = productImageFiles.filter(item => item.originFileObj).map(item => item.originFileObj);
 
         console.log(filesToUpload)
-
         if (filesToUpload.length > 0) {
             // @ts-ignore
             uploadMultipleImagesApi.mutate(filesToUpload, {
