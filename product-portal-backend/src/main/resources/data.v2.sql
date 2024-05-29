@@ -23,9 +23,9 @@ VALUES
 		'https://res.cloudinary.com/dixswfj8d/image/upload/v1712326296/product-portal-website-images/users/myhoathuylinh.jpg', 
         1, NOW(), 1),
     (6,'vandat@gmail.com', 'vandat', 'Văn Đạt Đỗ', '0999888777',
-		'$2y$10$grM2iS94i3JJEmdVzhtzm.tY/UR4lDXCKu2RZpWy9OxG9serXXr1O', 'USER', 
+		'$2y$10$grM2iS94i3JJEmdVzhtzm.tY/UR4lDXCKu2RZpWy9OxG9serXXr1O', 'SELLER', 
         'https://res.cloudinary.com/dixswfj8d/image/upload/v1712326288/product-portal-website-images/users/vandatdo.jpg', 
-        1, NOW(), 1),
+        0, NOW(), 1),
     (7,'linhchi@gmail.com', 'linhchi', 'Linh Chi', '0333222111',
 		'$2y$10$AKYyz5kKCMTnofPp/yDNmekAVnoUCy07AXrUGbSJpWritET4QXFf.', 'SELLER', 
         'https://res.cloudinary.com/dixswfj8d/image/upload/v1712326291/product-portal-website-images/users/linhchi.webp', 
@@ -35,7 +35,7 @@ VALUES
 		'https://res.cloudinary.com/dixswfj8d/image/upload/v1712326305/product-portal-website-images/users/ngoquanghuy.jpg', 
         1, NOW(), 1),
     (9,'honganh@gmail.com', 'honganh', 'Hồng Anh', '0666555222',
-		'$2y$10$VqbfKioN1fdcvpA9LweMTOoDydAk46Mzrq1ui3f1ynJttdYBPqfsm', 'USER', 
+		'$2y$10$VqbfKioN1fdcvpA9LweMTOoDydAk46Mzrq1ui3f1ynJttdYBPqfsm', 'SELLER', 
         'https://res.cloudinary.com/dixswfj8d/image/upload/v1712326281/product-portal-website-images/users/honganh.jpg', 
         0, NOW(), 1),
     (10,'khanhhoa@gmail.com', 'khanhhoa', 'Khánh Hoa', '0876543210',
@@ -99,7 +99,9 @@ INSERT INTO store (id,name, url_store, user_id, created_at, created_by) VALUES
 (8,'Electrolux', 'https://www.electrolux.vn/', 11, NOW(), 11),
 (9,'Viettablet', 'https://www.viettablet.com/', 12, NOW(), 12),
 (10,'Meta', 'https://meta.vn/',13, NOW(), 13),
-(11, 'IEF', 'https://www.ief-vn.com/', 14, NOW(), 14)
+(11, 'IEF', 'https://www.ief-vn.com/', 14, NOW(), 14),
+(12, 'Hacom', 'https://hacom.vn/', 6, NOW(), 6),
+(13, 'Nguyễn Công PC', 'https://nguyencongpc.vn/', 9, NOW(), 9)
 ;
 insert into image(store_id, url) VALUES
 (1, 'https://res.cloudinary.com/dixswfj8d/image/upload/v1712910892/product-portal-website-images/stores/logo-fpt-shop.jpg'),

@@ -1,10 +1,11 @@
 import { FaArrowLeft, FaPlus, FaSave, FaUpload } from "react-icons/fa"
-import "./SellerAddProduct.scss"
+import "./SellerUpdateProduct.scss"
 import { Link } from "react-router-dom"
 import { Button, Col, Form, FormProps, Image, Input, InputNumber, Row, Select, Upload } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { ProductRequest } from "../../models/Product";
 import useSellerUpdateProductViewModel from "./SellerUpdateProduct.vm";
+import { IoReturnUpBackOutline } from "react-icons/io5";
 export default function SellerUpdateProduct() {
     const {
         form,
@@ -30,6 +31,10 @@ export default function SellerUpdateProduct() {
 
     if (product) {
         return <div className="wrapper-seller-add-product">
+            <Link to='/seller' className="back-to-index">
+                <IoReturnUpBackOutline className="back-icon" />
+                Trở lại
+            </Link>
             <Form
                 form={form}
                 name="seller-register"

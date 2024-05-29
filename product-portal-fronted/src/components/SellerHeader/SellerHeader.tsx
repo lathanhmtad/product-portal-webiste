@@ -12,7 +12,7 @@ export default function SellerHeader() {
     return (
         <div className="wrapper-seller-header">
             <header className="seller-header">
-                <Link to='/' className="seller-header-logo-link">
+                <Link to='/seller' className="seller-header-logo-link">
                     <img src={Logo} alt="" className="seller-header-logo" />
                 </Link>
                 <div className="noti-user">

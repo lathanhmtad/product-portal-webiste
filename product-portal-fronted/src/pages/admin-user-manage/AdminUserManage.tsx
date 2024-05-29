@@ -1,18 +1,18 @@
 import "./AdminUserManage.scss"
-import {IoSearch} from "react-icons/io5";
-import {FaEdit} from "react-icons/fa";
-import {FaLock} from "react-icons/fa";
-import {FaLockOpen} from "react-icons/fa";
+import { IoSearch } from "react-icons/io5";
+import { FaEdit } from "react-icons/fa";
+import { FaLock } from "react-icons/fa";
+import { FaLockOpen } from "react-icons/fa";
 import Pagination from "../../components/Pagination";
 import Avatar from "../../assets/img/avatar.jpg"
-import {FaXmark} from "react-icons/fa6";
-import {Image, TableProps, Tag, Tooltip} from "antd";
-import {UserResponse} from "../../models/User";
+import { FaXmark } from "react-icons/fa6";
+import { Image, TableProps, Tag, Tooltip } from "antd";
+import { UserResponse } from "../../models/User";
 import ManageTable from "../../components/ManageTable";
 import useResetManagePageState from "../../hooks/use-reset-manage-page-state";
 import useGetAllApi from "../../hooks/use-get-all-api";
 import UserConfigs from "./UserConfigs";
-import {ListResponse} from "../../utils/FetchUtils";
+import { ListResponse } from "../../utils/FetchUtils";
 import PageConfigs from "../PageConfigs";
 import ManagePagination from "../../components/ManagePagination";
 
@@ -24,71 +24,71 @@ const userData: {
     role: string,
     enable: boolean
 }[] = [
-    {
-        userId: '0123456789',
-        fullName: 'Nguyễn Văn Thuận',
-        email: 'thuannguyen@gmail.com',
-        phoneNumber: '0905012035',
-        role: 'Customer',
-        enable: true
-    },
-    {
-        userId: '0123456789',
-        fullName: 'Nguyễn Văn Thuận',
-        email: 'thuannguyen@gmail.com',
-        phoneNumber: '0905012035',
-        role: 'Customer',
-        enable: true
-    },
-    {
-        userId: '0123456789',
-        fullName: 'Nguyễn Văn Thuận',
-        email: 'thuannguyen@gmail.com',
-        phoneNumber: '0905012035',
-        role: 'Customer',
-        enable: false
-    },
-    {
-        userId: '0123456789',
-        fullName: 'Nguyễn Văn Thuận',
-        email: 'thuannguyen@gmail.com',
-        phoneNumber: '0905012035',
-        role: 'Customer',
-        enable: false
-    },
-    {
-        userId: '0123456789',
-        fullName: 'Nguyễn Văn Thuận',
-        email: 'thuannguyen@gmail.com',
-        phoneNumber: '0905012035',
-        role: 'Customer',
-        enable: true
-    },
-    {
-        userId: '0123456789',
-        fullName: 'Nguyễn Văn Thuận',
-        email: 'thuannguyen@gmail.com',
-        phoneNumber: '0905012035',
-        role: 'Customer',
-        enable: true
-    },
-    {
-        userId: '0123456789',
-        fullName: 'Nguyễn Văn Thuận',
-        email: 'thuannguyen@gmail.com',
-        phoneNumber: '0905012035',
-        role: 'Customer',
-        enable: true
-    },
-    {
-        userId: '0123456789',
-        fullName: 'Nguyễn Văn Thuận',
-        email: 'thuannguyen@gmail.com',
-        phoneNumber: '0905012035',
-        role: 'Customer',
-        enable: true
-    }
-]
+        {
+            userId: '0123456789',
+            fullName: 'Nguyễn Văn Thuận',
+            email: 'thuannguyen@gmail.com',
+            phoneNumber: '0905012035',
+            role: 'Customer',
+            enable: true
+        },
+        {
+            userId: '0123456789',
+            fullName: 'Nguyễn Văn Thuận',
+            email: 'thuannguyen@gmail.com',
+            phoneNumber: '0905012035',
+            role: 'Customer',
+            enable: true
+        },
+        {
+            userId: '0123456789',
+            fullName: 'Nguyễn Văn Thuận',
+            email: 'thuannguyen@gmail.com',
+            phoneNumber: '0905012035',
+            role: 'Customer',
+            enable: false
+        },
+        {
+            userId: '0123456789',
+            fullName: 'Nguyễn Văn Thuận',
+            email: 'thuannguyen@gmail.com',
+            phoneNumber: '0905012035',
+            role: 'Customer',
+            enable: false
+        },
+        {
+            userId: '0123456789',
+            fullName: 'Nguyễn Văn Thuận',
+            email: 'thuannguyen@gmail.com',
+            phoneNumber: '0905012035',
+            role: 'Customer',
+            enable: true
+        },
+        {
+            userId: '0123456789',
+            fullName: 'Nguyễn Văn Thuận',
+            email: 'thuannguyen@gmail.com',
+            phoneNumber: '0905012035',
+            role: 'Customer',
+            enable: true
+        },
+        {
+            userId: '0123456789',
+            fullName: 'Nguyễn Văn Thuận',
+            email: 'thuannguyen@gmail.com',
+            phoneNumber: '0905012035',
+            role: 'Customer',
+            enable: true
+        },
+        {
+            userId: '0123456789',
+            fullName: 'Nguyễn Văn Thuận',
+            email: 'thuannguyen@gmail.com',
+            phoneNumber: '0905012035',
+            role: 'Customer',
+            enable: true
+        }
+    ]
 export default function AdminUserManage() {
 
     useResetManagePageState()
@@ -104,11 +104,11 @@ export default function AdminUserManage() {
             title: 'Thông tin người dùng',
             key: 'userInfo',
             render: (text, record: UserResponse) => (
-                <div style={{display: 'flex', alignItems: 'center', gap: 10}}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                     <Image
                         width={40}
                         height={40}
-                        style={{width: 40, height: 40, borderRadius: '50%', objectFit: 'cover'}}
+                        style={{ width: 40, height: 40, borderRadius: '50%', objectFit: 'cover' }}
                         src={record.avatar}
                     />
                     <span>{record.fullName}</span>
@@ -164,7 +164,7 @@ export default function AdminUserManage() {
                     default:
                         color = 'black';
                 }
-                return <Tag style={{fontWeight: 700}} color={color}>{role}</Tag>;
+                return <Tag style={{ fontWeight: 700 }} color={color}>{role}</Tag>;
             },
         },
         {
@@ -186,8 +186,8 @@ export default function AdminUserManage() {
             <div className="toolbar">
                 <div className="search-filter">
                     <div className="search">
-                        <input type="text" placeholder='Tìm kiếm...' className="search-input"/>
-                        <IoSearch className='search-icon'/>
+                        <input type="text" placeholder='Tìm kiếm...' className="search-input" />
+                        <IoSearch className='search-icon' />
                     </div>
                     <select name="" id="role">
                         <option className="role-item" value="Customer">Customer</option>
@@ -207,7 +207,7 @@ export default function AdminUserManage() {
                 resourceName={UserConfigs.resourceName}
             />
 
-            <ManagePagination listResponse={listResponse}/>
+            <ManagePagination listResponse={listResponse} />
 
             {/*<table className="table">*/}
             {/*    <tr className="header-row">*/}

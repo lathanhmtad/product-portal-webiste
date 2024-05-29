@@ -237,6 +237,7 @@ export default function ClientHeader() {
     }
 
     const [isOpen, setIsOpen] = useState(false)
+    const [isActive, setIsActive] = useState([true, false, false])
 
     const {
         data: listResponse = PageConfigs.initListResponse as ListResponse<CategoryResponse>
@@ -251,11 +252,11 @@ export default function ClientHeader() {
                     </Link>
                 </li>
                 <ul className='sub-header'>
-                    <li>
-                        <Link className='active' to={'/'}>Trang chủ</Link>
+                    <li onClick={() => setIsActive([true, false, false])}>
+                        <Link className={`${isActive[0] ? 'active' : ''}`} to={'/'}>Trang chủ</Link>
                     </li>
-                    <li>
-                        <Link to={'/introduce'}>Giới thiệu</Link>
+                    <li onClick={() => setIsActive([false, true, false])}>
+                        <Link className={`${isActive[1] ? 'active' : ''}`} to={'/introduce'}>Giới thiệu</Link>
                     </li>
                     <li className='categories'>
                         Danh mục sản phẩm
@@ -289,8 +290,8 @@ export default function ClientHeader() {
                     {user?.role.toLowerCase() === 'admin' && <li>
                         <Link to={'/admin'}>Admin</Link>
                     </li>}
-                    <li>
-                        <Link to={'/contact'}>Liên hệ</Link>
+                    <li onClick={() => setIsActive([false, false, true])}>
+                        <Link className={`${isActive[2] ? 'active' : ''}`} to={'/contact'}>Liên hệ</Link>
                     </li>
                 </ul>
                 <li className='search'>

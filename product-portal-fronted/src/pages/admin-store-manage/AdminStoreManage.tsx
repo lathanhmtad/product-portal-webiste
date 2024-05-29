@@ -1,19 +1,19 @@
-import {FaEdit} from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
 import Pagination from "../../components/Pagination";
-import {IoSearch} from "react-icons/io5";
-import {FaLock} from "react-icons/fa";
-import {FaLockOpen} from "react-icons/fa";
+import { IoSearch } from "react-icons/io5";
+import { FaLock } from "react-icons/fa";
+import { FaLockOpen } from "react-icons/fa";
 import "./AdminStoreManage.scss"
 import ManageTable from "../../components/ManageTable";
 import PageConfigs from "../PageConfigs";
-import {ListResponse} from "../../utils/FetchUtils";
-import {UserResponse} from "../../models/User";
+import { ListResponse } from "../../utils/FetchUtils";
+import { UserResponse } from "../../models/User";
 import useGetAllApi from "../../hooks/use-get-all-api";
 import UserConfigs from "../admin-user-manage/UserConfigs";
-import {StoreOwner, StoreResponse} from "../../models/Store";
+import { StoreOwner, StoreResponse } from "../../models/Store";
 import StoreConfigs from "./StoreConfigs";
 import ResourceUrl from "../../constants/ResourceUrl";
-import {Image, TableProps, Tag, Tooltip} from "antd";
+import { Image, TableProps, Tag, Tooltip } from "antd";
 import ManagePagination from "../../components/ManagePagination";
 
 const storeData: {
@@ -23,56 +23,56 @@ const storeData: {
     dateRegis: string,
     enable: boolean
 }[] = [
-    {
-        storeId: 'CH00001',
-        storeName: 'FPTShop',
-        sellerId: '0123456789',
-        dateRegis: '03/03/2024',
-        enable: true
-    },
-    {
-        storeId: 'CH00001',
-        storeName: 'FPTShop',
-        sellerId: '0123456789',
-        dateRegis: '03/03/2024',
-        enable: true
-    },
-    {
-        storeId: 'CH00001',
-        storeName: 'FPTShop',
-        sellerId: '0123456789',
-        dateRegis: '03/03/2024',
-        enable: true
-    },
-    {
-        storeId: 'CH00001',
-        storeName: 'FPTShop',
-        sellerId: '0123456789',
-        dateRegis: '03/03/2024',
-        enable: false
-    },
-    {
-        storeId: 'CH00001',
-        storeName: 'FPTShop',
-        sellerId: '0123456789',
-        dateRegis: '03/03/2024',
-        enable: true
-    },
-    {
-        storeId: 'CH00001',
-        storeName: 'FPTShop',
-        sellerId: '0123456789',
-        dateRegis: '03/03/2024',
-        enable: false
-    },
-    {
-        storeId: 'CH00001',
-        storeName: 'FPTShop',
-        sellerId: '0123456789',
-        dateRegis: '03/03/2024',
-        enable: true
-    }
-]
+        {
+            storeId: 'CH00001',
+            storeName: 'FPTShop',
+            sellerId: '0123456789',
+            dateRegis: '03/03/2024',
+            enable: true
+        },
+        {
+            storeId: 'CH00001',
+            storeName: 'FPTShop',
+            sellerId: '0123456789',
+            dateRegis: '03/03/2024',
+            enable: true
+        },
+        {
+            storeId: 'CH00001',
+            storeName: 'FPTShop',
+            sellerId: '0123456789',
+            dateRegis: '03/03/2024',
+            enable: true
+        },
+        {
+            storeId: 'CH00001',
+            storeName: 'FPTShop',
+            sellerId: '0123456789',
+            dateRegis: '03/03/2024',
+            enable: false
+        },
+        {
+            storeId: 'CH00001',
+            storeName: 'FPTShop',
+            sellerId: '0123456789',
+            dateRegis: '03/03/2024',
+            enable: true
+        },
+        {
+            storeId: 'CH00001',
+            storeName: 'FPTShop',
+            sellerId: '0123456789',
+            dateRegis: '03/03/2024',
+            enable: false
+        },
+        {
+            storeId: 'CH00001',
+            storeName: 'FPTShop',
+            sellerId: '0123456789',
+            dateRegis: '03/03/2024',
+            enable: true
+        }
+    ]
 export default function AdminStoreManage() {
 
     const entityDetailsTableRowsFragment: TableProps<StoreResponse>['columns'] = [
@@ -80,11 +80,11 @@ export default function AdminStoreManage() {
             title: 'Thông tin cửa hàng',
             key: 'storeInfo',
             render: (text, record: StoreResponse) => (
-                <div style={{display: 'flex', alignItems: 'center', gap: 10}}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                     <Image
                         width={40}
                         height={40}
-                        style={{width: 40, height: 40, borderRadius: '50%', objectFit: 'cover'}}
+                        style={{ width: 40, height: 40, borderRadius: '50%', objectFit: 'cover' }}
                         src={record.imageUrls ? record.imageUrls[0] : ''}
                     />
                     <span>{record.name}</span>
@@ -139,8 +139,8 @@ export default function AdminStoreManage() {
         <div className="admin-store-manage">
             <div className="search-filter">
                 <div className="search">
-                    <input type="text" placeholder='Tìm kiếm...' className="search-input"/>
-                    <IoSearch className='search-icon'/>
+                    <input type="text" placeholder='Tìm kiếm...' className="search-input" />
+                    <IoSearch className='search-icon' />
                 </div>
             </div>
 
@@ -149,9 +149,9 @@ export default function AdminStoreManage() {
                 resourceUrl={StoreConfigs.resourceUrl}
                 resourceKey={StoreConfigs.resourceKey}
                 entityDetailsTableRowsFragment={entityDetailsTableRowsFragment}
-                resourceName={StoreConfigs.resourceName}/>
+                resourceName={StoreConfigs.resourceName} />
 
-            <ManagePagination listResponse={listResponse}/>
+            <ManagePagination listResponse={listResponse} />
 
             {/*<table className="table">*/}
             {/*    <tr className="header-row">*/}

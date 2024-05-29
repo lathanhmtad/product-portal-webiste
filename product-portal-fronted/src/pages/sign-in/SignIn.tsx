@@ -1,18 +1,18 @@
 import "./SignIn.scss"
-import {FaRegUserCircle} from "react-icons/fa";
-import {AiOutlineKey} from "react-icons/ai";
-import {Link, useNavigate} from "react-router-dom";
-import {FaEye} from "react-icons/fa";
-import {FaEyeSlash} from "react-icons/fa";
-import {App, Button, Form, FormProps, Input} from "antd";
-import {LoginRequest, LoginResponse} from "../../models/Auth";
-import {useMutation} from "react-query";
-import FetchUtils, {ErrorMessage} from "../../utils/FetchUtils";
+import { FaRegUserCircle } from "react-icons/fa";
+import { AiOutlineKey } from "react-icons/ai";
+import { Link, useNavigate } from "react-router-dom";
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
+import { App, Button, Form, FormProps, Input } from "antd";
+import { LoginRequest, LoginResponse } from "../../models/Auth";
+import { useMutation } from "react-query";
+import FetchUtils, { ErrorMessage } from "../../utils/FetchUtils";
 import ResourceUrl from "../../constants/ResourceUrl";
-import {useAppDispatch, useAppSelector} from "../../redux/hooks";
-import {resetAuthState, setUser, updateAccessToken} from "../../redux/slices/authSlice";
-import {useState} from "react";
-import {Simulate} from "react-dom/test-utils";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { resetAuthState, setUser, updateAccessToken } from "../../redux/slices/authSlice";
+import { useState } from "react";
+import { Simulate } from "react-dom/test-utils";
 import load = Simulate.load;
 
 export default function SignIn() {
@@ -23,7 +23,7 @@ export default function SignIn() {
 
     const dispatch = useAppDispatch()
 
-    const {notification} = App.useApp()
+    const { notification } = App.useApp()
 
     const loginApi = useMutation<LoginResponse, ErrorMessage, LoginRequest>(
         (requestBody) => FetchUtils.post(ResourceUrl.LOGIN, requestBody)
@@ -41,7 +41,14 @@ export default function SignIn() {
                 message: 'Đăng nhập thành công'
             })
 
-            navigate('/')
+            if (loginResponse.user.role.toLowerCase() === 'admin') {
+                navigate('/admin')
+            } else
+                if (loginResponse.user.role.toLowerCase() === 'seller') {
+                    navigate('/seller')
+                } else {
+                    navigate('/')
+                }
 
         } catch (e: any) {
             dispatch(resetAuthState())
@@ -58,35 +65,35 @@ export default function SignIn() {
             <Link to='/' className="back-to-index">{`<`} Trở về trang chủ</Link>
             <div className="sign-in">
                 <span className="title">Đăng nhập <span
-                    style={{color: 'var(--primary-color)', fontWeight: 'bold'}}>EPMALL</span></span>
+                    style={{ color: 'var(--primary-color)', fontWeight: 'bold' }}>EPMALL</span></span>
 
                 <Form
                     disabled={loading}
                     name="basic"
                     labelAlign="left"
                     size='large'
-                    labelCol={{span: 8}}
-                    wrapperCol={{span: 24}}
+                    labelCol={{ span: 8 }}
+                    wrapperCol={{ span: 24 }}
                     onFinish={onFinish}
                     autoComplete="off"
                 >
                     <Form.Item<LoginRequest>
                         label="Tên đăng nhập"
                         name="username"
-                        rules={[{required: true, message: 'Vui lòng nhập tên đăng nhập!'}]}
+                        rules={[{ required: true, message: 'Vui lòng nhập tên đăng nhập!' }]}
                     >
-                        <Input/>
+                        <Input />
                     </Form.Item>
 
                     <Form.Item<LoginRequest>
                         label="Mật khẩu"
                         name="password"
-                        rules={[{required: true, message: 'Vui lòng nhập mật khẩu!'}]}
+                        rules={[{ required: true, message: 'Vui lòng nhập mật khẩu!' }]}
                     >
-                        <Input.Password/>
+                        <Input.Password />
                     </Form.Item>
 
-                    <Form.Item wrapperCol={{offset: 8, span: 16}}>
+                    <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                         <Button loading={loading} type="primary" htmlType="submit">
                             Đăng nhập
                         </Button>
