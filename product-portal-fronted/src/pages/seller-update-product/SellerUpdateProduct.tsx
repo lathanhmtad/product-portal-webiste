@@ -1,22 +1,27 @@
 import { FaArrowLeft, FaPlus, FaSave, FaUpload } from "react-icons/fa"
 import "./SellerAddProduct.scss"
 import { Link } from "react-router-dom"
-import {Button, Col, Form, FormProps, Input, InputNumber, Row, Select, Upload} from "antd";
+import {Button, Col, Form, FormProps, Image, Input, InputNumber, Row, Select, Upload} from "antd";
 import {PlusOutlined} from "@ant-design/icons";
-import {SellerRequest} from "../../models/User";
-import useSellerAddProductViewModel from "./SellerAddProduct.vm";
 import {ProductRequest} from "../../models/Product";
-export default function SellerAddProduct() {
+import useSellerUpdateProductViewModel from "./SellerUpdateProduct.vm";
+export default function SellerUpdateProduct() {
     const {
         form,
         loading,
         handleOpenPreview,
+        previewOpen,
+        previewImage,
+        setPreviewImage,
+        setPreviewOpen,
         handleFormSubmit,
         setLoading,
         productImageFiles,
         handleChangeProductImage,
+        id,
+        product,
         categorySelectList
-    } = useSellerAddProductViewModel()
+    } = useSellerUpdateProductViewModel()
 
     const onFinish: FormProps<ProductRequest>['onFinish'] = (values) => {
         setLoading(true)
@@ -33,7 +38,7 @@ export default function SellerAddProduct() {
                 disabled={loading}
                 autoComplete="off"
             >
-                <span className="infor-title">THÔNG TIN SẢN PHẨM</span>
+                <span className="infor-title">CẬP NHẬP SẢN PHẨM / ID:{id}</span>
 
                 <div className="prod-information">
                     <div style={{width: '100%'}} className="register-info-content">
@@ -72,6 +77,8 @@ export default function SellerAddProduct() {
                                     rules={[{required: true, message: 'Vui lòng chọn danh sản phẩm!'}]}
                                 >
                                     <Select
+                                        // value={product?.categoryId}
+                                        // labelInValue={true}
                                         style={{ width: '100%' }}
                                         options={categorySelectList}
                                     />
@@ -112,11 +119,23 @@ export default function SellerAddProduct() {
                         </Form.Item>
 
                         <Button style={{marginTop: '8px'}} type='primary' loading={loading} htmlType='submit' size='large'
-                                className="register-button">Thêm mới</Button>
+                                className="register-button">Cập nhập</Button>
                     </div>
                 </div>
             </Form>
 
+
+            {previewImage && (
+                <Image
+                    wrapperStyle={{display: 'none'}}
+                    preview={{
+                        visible: previewOpen,
+                        onVisibleChange: (visible) => setPreviewOpen(visible),
+                        afterOpenChange: (visible) => !visible && setPreviewImage(''),
+                    }}
+                    src={previewImage}
+                />
+            )}
 
             {/*<form action="" className="seller-add-product">                */}
             {/*    <span className="infor-title">THÔNG TIN SẢN PHẨM</span>*/}

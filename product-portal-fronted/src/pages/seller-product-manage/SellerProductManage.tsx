@@ -10,7 +10,7 @@ import {ListResponse} from "../../utils/FetchUtils";
 import {ProductResponse} from "../../models/Product";
 import ManageTable from "../../components/ManageTable";
 import ManagePagination from "../../components/ManagePagination";
-import {TableProps} from "antd";
+import {Image, TableProps} from "antd";
 import {StoreResponse} from "../../models/Store";
 import {useAppDispatch, useAppSelector} from "../../redux/hooks";
 import {setActiveFilter, setFilters} from "../../redux/slices/managePageSlice";
@@ -72,14 +72,14 @@ export default function SellerProductManage() {
 
     useEffect(() => {
 
-        const filterCriteria : FilterCriteria = {
+        const filterCriteria: FilterCriteria = {
             property: 'createdBy',
             type: EntityPropertyType.NUMBER,
             operator: NumberOperator.EQUALS,
             value: `${user ? user.id : 1}`
         }
 
-        const filter : Filter = {
+        const filter: Filter = {
             // id: `1`,
             // createdAt: `adw`,
             // updatedAt: `waad`,
@@ -104,6 +104,15 @@ export default function SellerProductManage() {
             title: 'Tên sản phẩm',
             dataIndex: 'name',
             key: 'name',
+            render: (_, record) => <div style={{display: 'flex', alignItems: 'center', gap: 10}}>
+                <Image
+                    width={40}
+                    height={40}
+                    style={{width: 40, height: 40, borderRadius: '50%', objectFit: 'cover'}}
+                    src={record.productImages[0]}
+                />
+                <span>{record.name}</span>
+            </div>
         },
         {
             title: 'Thể loại',
@@ -114,7 +123,7 @@ export default function SellerProductManage() {
             title: 'Giá',
             dataIndex: 'price',
             key: 'price',
-            render: value => <strong>${formatPriceVND(value)}</strong>
+            render: value => <strong>{formatPriceVND(value)}</strong>
         },
         {
             title: 'Cưa hàng',

@@ -15,6 +15,7 @@ public class ProductResponse extends BaseResponse {
     private BigDecimal price;
     private String slug;
     private String category;
+    private Long categoryId;
     private StoreResponse storeOwner;
     private List<String> productUrls;
     private List<String> productImages;

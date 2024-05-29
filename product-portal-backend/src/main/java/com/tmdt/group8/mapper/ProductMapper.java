@@ -13,13 +13,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring", uses = {StoreMapper.class})
-public interface ProductMapper extends GenericMapper<Product, ProductRequest, ProductResponse> {
+public interface ProductMapper extends GenericMapper<Product, Object, ProductResponse> {
 
     @Override
     @Mapping(source = "category.name", target = "category")
     @Mapping(source = "store", target = "storeOwner")
     @Mapping(target = "productUrls", qualifiedByName = "getStringProductUrls")
     @Mapping(target = "productImages", qualifiedByName = "getProductImages")
+    @Mapping(source = "category.id", target = "categoryId")
     ProductResponse entityToResponse(Product entity);
 
     @Named("getStringProductUrls")

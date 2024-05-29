@@ -8,10 +8,14 @@ import useUploadMultipleImagesApi from "../../hooks/use-upload-multiple-images-a
 import useUploadSingleImageApi from "../../hooks/use-upload-single-image-api";
 import ResourceUrl from "../../constants/ResourceUrl";
 import {SelectOption} from "../../types";
-import {ProductRequest} from "../../models/Product";
+import {ProductRequest, ProductResponse} from "../../models/Product";
 import {useAppSelector} from "../../redux/hooks";
 import useGetAllApi from "../../hooks/use-get-all-api";
 import {CategoryResponse} from "../../models/Category";
+import useGetByIdApi from "../../hooks/use-get-by-id-api";
+import {useParams} from "react-router-dom";
+import {useQueryClient} from "react-query";
+import useUpdateApi from "../../hooks/use-update-api";
 
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
 
@@ -23,8 +27,12 @@ const getBase64 = (file: FileType): Promise<string> =>
         reader.onerror = (error) => reject(error);
     });
 
-function useSellerAddProductViewModel() {
+function useSellerUpdateProductViewModel() {
+    const {id} = useParams()
+
     const [form] = Form.useForm();
+
+    const [product, setProduct] = useState<ProductResponse>()
 
     const {user} = useAppSelector(state => state.auth)
 
@@ -33,23 +41,58 @@ function useSellerAddProductViewModel() {
     const [previewOpen, setPreviewOpen] = useState(false);
     const [previewImage, setPreviewImage] = useState('');
 
+    const queryClient = useQueryClient();
 
     const [productImageFiles, setProductImageFiles] = useState<UploadFile[]>([])
+    const [newProductImageFiles, setNewProductImageFiles] = useState<UploadFile[]>([])
 
     const [categorySelectList, setCategorySelectList] = useState<SelectOption[]>([])
 
+    useGetByIdApi<ProductResponse>(ResourceUrl.PRODUCT, "products", Number(id),
+        async (productResponse) => {
+            // await queryClient.invalidateQueries(["categories", 'getAll']);
+            setProduct(productResponse);
+
+            const fileList: UploadFile[] = productResponse.productImages.map((value, index) => ({
+                uid: `${index}`,
+                name: `image.png`,
+                status: 'done',
+                url: value,
+            }))
+
+            const formValues: ProductRequest = {
+                name: productResponse.name,
+                price: Number(productResponse.price),
+                productUrl: productResponse.productUrls[0],
+                categoryId: productResponse.categoryId,
+                productImages: [],
+                userId: user?.id ? user.id : 1
+
+            };
+            form.setFieldsValue(formValues)
+            setProductImageFiles(fileList)
+            form.setFieldValue("productImageFiles", fileList)
+            // form.setFieldValue("categoryId", {
+            //     label: productResponse.category,
+            //     value: productResponse.categoryId
+            // })
+            form.setFieldValue("categoryId", productResponse.categoryId)
+        }
+    );
+
     useGetAllApi<CategoryResponse>(ResourceUrl.CLIENT_CATEGORY, "categories",
-        { all: true },
+        {all: true},
         (categoryListResponse) => {
             const selectList: SelectOption[] = categoryListResponse.content.map((item) => ({
                 value: String(item.id),
                 label: item.name
             }));
+            // form.setFieldValue("categoryId", product?.categoryId)
             setCategorySelectList(selectList);
         }
     );
 
-    const createApi = useCreateApi<ProductRequest, ApiResponse>(ResourceUrl.CLIENT_SELLER_ADD_PRODCUT)
+    const updateApi = useUpdateApi<ProductRequest, ApiResponse>(ResourceUrl.CLIENT_SELLER_UPDATE_PRODUCT, "products", Number(id));
 
     const uploadMultipleImagesApi = useUploadMultipleImagesApi()
     const uploadSingleImageApi = useUploadSingleImageApi()
@@ -68,16 +111,21 @@ function useSellerAddProductViewModel() {
     };
 
     const handleFormSubmit = (formValues: ProductRequest) => {
-        const createProduct = (productImageUrls: string[]) => {
+        console.log(formValues)
+
+        const updateProduct = (productImageUrls: string[]) => {
             const requestBody: ProductRequest = {
                 name: formValues.name,
                 price: formValues.price,
                 categoryId: formValues.categoryId,
                 productUrl: formValues.productUrl,
                 productImages: productImageUrls,
-                userId: user?.id ? user.id : 1
+                userId: user?.id ? user.id : 1,
+                oldImage: productImageFiles
+                    .map(value => value.url)
+                    .filter((url): url is string => Boolean(url))
             }
-            createApi.mutate(requestBody, {
+            updateApi.mutate(requestBody, {
                 onSuccess: () => {
                     form.resetFields()
                     setLoading(false)
@@ -86,11 +134,19 @@ function useSellerAddProductViewModel() {
             })
         }
 
-        // @ts-ignore
-        uploadMultipleImagesApi.mutate(productImageFiles.map(item => item.originFileObj), {
-            onSuccess: (productImageUrlsResponse) => createProduct(productImageUrlsResponse.imageUrls),
-            onError: () => setLoading(false)
-        })
+        const filesToUpload = productImageFiles.filter(item => item.originFileObj).map(item => item.originFileObj);
+
+        console.log(filesToUpload)
+
+        if (filesToUpload.length > 0) {
+            // @ts-ignore
+            uploadMultipleImagesApi.mutate(filesToUpload, {
+                onSuccess: (productImageUrlsResponse) => updateProduct(productImageUrlsResponse.imageUrls),
+                onError: () => setLoading(false)
+            });
+        } else {
+            updateProduct([])
+        }
     }
 
     return {
@@ -105,8 +161,10 @@ function useSellerAddProductViewModel() {
         productImageFiles,
         loading,
         categorySelectList,
-        setLoading
+        setLoading,
+        id,
+        product
     }
 }
 
-export default useSellerAddProductViewModel
+export default useSellerUpdateProductViewModel
