@@ -4,8 +4,21 @@ import { FaRegSun } from "react-icons/fa";
 import { FaSignOutAlt } from "react-icons/fa";
 import "./AdminSidebar.scss"
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { App } from "antd";
+import { resetAuthState } from "../../redux/slices/authSlice";
 
 export default function AdminSidebar() {
+    const dispatch = useDispatch()
+    const { notification } = App.useApp()
+    const handleLogout = () => {
+
+        dispatch(resetAuthState())
+
+        notification.success({
+            message: 'Đăng xuất thành công!'
+        })
+    }
     return (
         <div className="admin-sidebar">
             <div className="manage">
@@ -23,7 +36,7 @@ export default function AdminSidebar() {
                     <FaRegSun className="setting-icon" />
                     <span className="setting-content">Cài đặt</span>
                 </Link>
-                <Link to="/sign-in" className="logout">
+                <Link to="/sign-in" className="logout" onClick={handleLogout}>
                     <FaSignOutAlt className="logout-icon" />
                     <span className="logout-content">Đăng xuất</span>
                 </Link>
