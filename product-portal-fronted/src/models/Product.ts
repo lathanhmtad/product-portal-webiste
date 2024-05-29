@@ -1,7 +1,7 @@
 import BaseResponse from "./BaseResponse";
 import {StoreResponse} from "./Store";
 
-export interface ProductResponse extends BaseResponse{
+export interface ProductResponse extends BaseResponse {
     name: string
     price: string
     slug: string
@@ -9,10 +9,15 @@ export interface ProductResponse extends BaseResponse{
     storeOwner: StoreResponse
     productUrls: string[]
     productImages: string[]
+    categoryId: number
 }
 
 export interface ProductRequest {
     name: string
     price: number
-    // product
+    categoryId?: number
+    productUrl: string
+    productImages: string[]
+    userId: number
+    oldImage?: string[]
 }

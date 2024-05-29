@@ -45,13 +45,13 @@ public class GenericMappingRegister {
     // controllers
     private GenericController<UserRequest, UserResponse> userController;
     private GenericController<StoreRequest, StoreResponse> storeController;
-    private GenericController<ProductRequest, ProductResponse> productController;
+    private GenericController<Object, ProductResponse> productController;
     private GenericController<CategoryRequest, CategoryResponse> categoryController;
 
     // services
     private GenericService<User, UserRequest, UserResponse> userService;
     private GenericService<Store, StoreRequest, StoreResponse> storeService;
-    private GenericService<Product, ProductRequest, ProductResponse> productService;
+    private GenericService<Product, Object, ProductResponse> productService;
     private GenericService<Category, CategoryRequest, CategoryResponse> categoryService;
 
     @PostConstruct
@@ -76,7 +76,7 @@ public class GenericMappingRegister {
                 context.getBean(ProductMapper.class),
                 null,
                 ResourceName.PRODUCT
-        ), ProductRequest.class);
+        ), Object.class);
 
         register("categories", categoryController, categoryService.init(
                 context.getBean(CategoryRepo.class),

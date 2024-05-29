@@ -267,55 +267,55 @@ INSERT INTO comment (id, reply, product_id, user_id, parent_comment_id, created_
 
 -- inserting replies to comments
 -- Reply cho comment 1
-INSERT INTO comment (reply, product_id, user_id, parent_comment_id, created_at, created_by) VALUES
-('Đúng vậy, xem phim bom tấn với tivi này thì tuyệt vời.', 1, 1, 1, NOW(), 10);
+-- INSERT INTO comment (reply, product_id, user_id, parent_comment_id, created_at, created_by) VALUES
+-- ('Đúng vậy, xem phim bom tấn với tivi này thì tuyệt vời.', 1, 1, 1, NOW(), 10);
 
--- Reply cho comment 2
-INSERT INTO comment (reply, product_id, user_id, parent_comment_id, created_at, created_by) VALUES
-('Mình cũng đang chơi PUBG với tai nghe này, rất ưng ý.', 2, 2, 2, NOW(), 11);
+-- -- Reply cho comment 2
+-- INSERT INTO comment (reply, product_id, user_id, parent_comment_id, created_at, created_by) VALUES
+-- ('Mình cũng đang chơi PUBG với tai nghe này, rất ưng ý.', 2, 2, 2, NOW(), 11);
 
--- Reply cho comment 3
-INSERT INTO comment (reply, product_id, user_id, parent_comment_id, created_at, created_by) VALUES
-('Mình đồng ý, đọc sách hay giúp thay đổi tư duy và cuộc sống.', 13, 3, 3, NOW(), 12);
+-- -- Reply cho comment 3
+-- INSERT INTO comment (reply, product_id, user_id, parent_comment_id, created_at, created_by) VALUES
+-- ('Mình đồng ý, đọc sách hay giúp thay đổi tư duy và cuộc sống.', 13, 3, 3, NOW(), 12);
 
--- Reply cho comment 4
-INSERT INTO comment (reply, product_id, user_id, parent_comment_id, created_at, created_by) VALUES
-('Mình cũng đang mặc áo polo này, chất lượng tốt và form dáng đẹp.', 7, 4, 4, NOW(), 13);
+-- -- Reply cho comment 4
+-- INSERT INTO comment (reply, product_id, user_id, parent_comment_id, created_at, created_by) VALUES
+-- ('Mình cũng đang mặc áo polo này, chất lượng tốt và form dáng đẹp.', 7, 4, 4, NOW(), 13);
 
--- Reply cho comment 5
-INSERT INTO comment (reply, product_id, user_id, parent_comment_id, created_at, created_by) VALUES
-('Mình mua sản phẩm này được 2 tháng rồi, vẫn rất hài lòng.', 5, 5, 5, NOW(), 14);
+-- -- Reply cho comment 5
+-- INSERT INTO comment (reply, product_id, user_id, parent_comment_id, created_at, created_by) VALUES
+-- ('Mình mua sản phẩm này được 2 tháng rồi, vẫn rất hài lòng.', 5, 5, 5, NOW(), 14);
 
--- Reply cho comment 6
-INSERT INTO comment (reply, product_id, user_id, parent_comment_id, created_at, created_by) VALUES
-('Mình cũng thích camera của điện thoại này, chụp ảnh và quay video rất đẹp.', 6, 6, 6, NOW(), 15);
+-- -- Reply cho comment 6
+-- INSERT INTO comment (reply, product_id, user_id, parent_comment_id, created_at, created_by) VALUES
+-- ('Mình cũng thích camera của điện thoại này, chụp ảnh và quay video rất đẹp.', 6, 6, 6, NOW(), 15);
 
--- Reply cho comment 7
-INSERT INTO comment (reply, product_id, user_id, parent_comment_id, created_at, created_by) VALUES
-('Mình chơi game Liên Quân Mobile với điện thoại này, mượt mà không giật lag.', 7, 7, 7, NOW(), 16);
+-- -- Reply cho comment 7
+-- INSERT INTO comment (reply, product_id, user_id, parent_comment_id, created_at, created_by) VALUES
+-- ('Mình chơi game Liên Quân Mobile với điện thoại này, mượt mà không giật lag.', 7, 7, 7, NOW(), 16);
 
--- Reply cho comment 8
-INSERT INTO comment (reply, product_id, user_id, parent_comment_id, created_at, created_by) VALUES
-('Mình sử dụng điện thoại này cả ngày mà không lo hết pin.', 8, 8, 8, NOW(), 17);
+-- -- Reply cho comment 8
+-- INSERT INTO comment (reply, product_id, user_id, parent_comment_id, created_at, created_by) VALUES
+-- ('Mình sử dụng điện thoại này cả ngày mà không lo hết pin.', 8, 8, 8, NOW(), 17);
 
--- Reply cho comment 9
-INSERT INTO comment (reply, product_id, user_id, parent_comment_id, created_at, created_by) VALUES
-('Mình xem phim trên điện thoại này rất thích, màn hình hiển thị đẹp và màu sắc chân thực.', 9, 9, 9, NOW(), 18);
+-- -- Reply cho comment 9
+-- INSERT INTO comment (reply, product_id, user_id, parent_comment_id, created_at, created_by) VALUES
+-- ('Mình xem phim trên điện thoại này rất thích, màn hình hiển thị đẹp và màu sắc chân thực.', 9, 9, 9, NOW(), 18);
 
--- Reply cho comment 10
-INSERT INTO comment (reply, product_id, user_id, parent_comment_id, created_at, created_by) VALUES
-('Mình nghe nhạc với tai nghe này rất hay, âm thanh sống động.', 10, 10, 10, NOW(), 19);
+-- -- Reply cho comment 10
+-- INSERT INTO comment (reply, product_id, user_id, parent_comment_id, created_at, created_by) VALUES
+-- ('Mình nghe nhạc với tai nghe này rất hay, âm thanh sống động.', 10, 10, 10, NOW(), 19);
 
--- Reply cho comment 11
-INSERT INTO comment (reply, product_id, user_id, parent_comment_id, created_at, created_by) VALUES
-('Mình cũng mua 2 chiếc cho bố mẹ, họ rất thích món quà này.', 11, 5, 11, NOW(), 20);
+-- -- Reply cho comment 11
+-- INSERT INTO comment (reply, product_id, user_id, parent_comment_id, created_at, created_by) VALUES
+-- ('Mình cũng mua 2 chiếc cho bố mẹ, họ rất thích món quà này.', 11, 5, 11, NOW(), 20);
 
--- Reply cho comment 12
-INSERT INTO comment (reply, product_id, user_id, parent_comment_id, created_at, created_by) VALUES
-('Mình mặc áo này đi chơi rất thoải mái, chất liệu vải mềm mại và thoáng mát.', 12, 3, 12, NOW(), 21);
+-- -- Reply cho comment 12
+-- INSERT INTO comment (reply, product_id, user_id, parent_comment_id, created_at, created_by) VALUES
+-- ('Mình mặc áo này đi chơi rất thoải mái, chất liệu vải mềm mại và thoáng mát.', 12, 3, 12, NOW(), 21);
 
--- Reply cho comment 13
-INSERT INTO comment (reply, product_id, user_id, parent_comment_id, created_at, created_by) VALUES
-('Mình mua váy này để đi dự tiệc, form dáng đẹp và tôn dáng người mặc.', 13, 6, 13, NOW(), 22);
+-- -- Reply cho comment 13
+-- INSERT INTO comment (reply, product_id, user_id, parent_comment_id, created_at, created_by) VALUES
+-- ('Mình mua váy này để đi dự tiệc, form dáng đẹp và tôn dáng người mặc.', 13, 6, 13, NOW(), 22);
 
 

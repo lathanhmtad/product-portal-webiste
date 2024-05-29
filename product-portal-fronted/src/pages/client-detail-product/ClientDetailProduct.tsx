@@ -61,6 +61,8 @@ export default function ClientDetailProduct() {
 
     const { id } = useParams()
 
+
+
     const { isLoading } =
         useGetByIdApi<ProductResponse>(
             ResourceUrl.PRODUCT,
@@ -91,7 +93,7 @@ export default function ClientDetailProduct() {
                                     <span className="product-website-link">Link sản phẩm: { }
                                         <Link target="_blank" to={value}
                                             className="">{value}</Link></span>
-                                    <span className="product-price">Giá sản phẩm: <span style={{ fontWeight: 'normal' }}>{'250000 VND'}</span></span>
+                                    <span className="product-price">Giá sản phẩm: <span style={{ fontWeight: 'normal' }}>{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(+product.price)}</span></span>
                                 </div>
                             })}
                         </div>

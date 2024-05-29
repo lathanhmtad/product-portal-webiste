@@ -7,6 +7,7 @@ import PageConfigs from "../../pages/PageConfigs"
 import {FaEye, FaRegTrashAlt} from "react-icons/fa";
 import {CiEdit, CiTrash} from "react-icons/ci";
 import {MdOutlineEdit} from "react-icons/md";
+import {Link} from "react-router-dom";
 
 export interface ManageTableProps<T> {
     listResponse: ListResponse<T>
@@ -44,9 +45,10 @@ function ManageTable<T extends BaseResponse>(props: ManageTableProps<T>) {
                             className='btn btn-primary  d-flex align-items-center py-2'>
                         <FaEye/>
                     </button>
-                    <button className="btn btn-warning text-white d-flex align-items-center py-2">
+                    <Link to={`update/${record.id}`}
+                          className="btn btn-warning text-white d-flex align-items-center py-2">
                         <MdOutlineEdit/>
-                    </button>
+                    </Link>
                     <button onClick={() => handleDeleteEntityButton(record.id)}
                             className='btn btn-danger d-flex align-items-center py-2'>
                         <FaRegTrashAlt/>
