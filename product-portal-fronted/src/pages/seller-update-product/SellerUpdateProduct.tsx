@@ -28,13 +28,19 @@ export default function SellerUpdateProduct() {
         handleFormSubmit(values)
     };
 
-    return (
-        <div className="wrapper-seller-add-product">
+    if(product) {
+        return <div className="wrapper-seller-add-product">
             <Form
                 form={form}
                 name="seller-register"
                 className='seller-add-product'
                 onFinish={onFinish}
+                initialValues={{
+                    name: product?.name,
+                    price: Number(product?.price),
+                    productUrl: product?.productUrls[0],
+                    categoryId: product?.categoryId,
+                }}
                 disabled={loading}
                 autoComplete="off"
             >
@@ -63,7 +69,7 @@ export default function SellerUpdateProduct() {
                                     name="price"
                                     rules={[{required: true, message: 'Vui lòng nhập giá sản phẩm!'}]}
                                 >
-                                    <InputNumber style={{width: '100%'}} addonAfter="VND" defaultValue={0} />
+                                    <InputNumber style={{width: '100%'}} addonAfter="VND" defaultValue={0}/>
                                 </Form.Item>
                             </Col>
                         </Row>
@@ -74,12 +80,14 @@ export default function SellerUpdateProduct() {
                                     label="Danh mục sản phẩm"
                                     labelCol={{span: 24}}
                                     name="categoryId"
+                                    // initialValue={product.categoryId}
                                     rules={[{required: true, message: 'Vui lòng chọn danh sản phẩm!'}]}
                                 >
                                     <Select
+                                        // defaultValue={product.categoryId}
                                         // value={product?.categoryId}
-                                        // labelInValue={true}
-                                        style={{ width: '100%' }}
+                                        labelInValue={true}
+                                        style={{width: '100%'}}
                                         options={categorySelectList}
                                     />
                                 </Form.Item>
@@ -91,7 +99,7 @@ export default function SellerUpdateProduct() {
                                     name="productUrl"
                                     rules={[{required: true, message: 'Vui lòng nhập đường dẫn sản phẩm!'}]}
                                 >
-                                    <Input />
+                                    <Input/>
                                 </Form.Item>
                             </Col>
                         </Row>
@@ -118,7 +126,8 @@ export default function SellerUpdateProduct() {
                             </Upload>
                         </Form.Item>
 
-                        <Button style={{marginTop: '8px'}} type='primary' loading={loading} htmlType='submit' size='large'
+                        <Button style={{marginTop: '8px'}} type='primary' loading={loading} htmlType='submit'
+                                size='large'
                                 className="register-button">Cập nhập</Button>
                     </div>
                 </div>
@@ -196,6 +205,8 @@ export default function SellerUpdateProduct() {
             {/*        </Link>*/}
             {/*    </div>*/}
             {/*</form>*/}
-        </div> 
-    )
+        </div>
+    }
+
+    return <div>Loading</div>
 }
