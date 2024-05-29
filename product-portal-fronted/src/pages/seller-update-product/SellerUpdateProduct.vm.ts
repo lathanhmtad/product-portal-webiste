@@ -1,20 +1,20 @@
-import {Form, GetProp, UploadFile, UploadProps} from "antd";
-import {useState} from "react";
-import {SellerRequest} from "../../models/User";
+import { Form, GetProp, UploadFile, UploadProps } from "antd";
+import { useState } from "react";
+import { SellerRequest } from "../../models/User";
 import useCreateApi from "../../hooks/use-create-api";
-import {ApiResponse} from "../../utils/FetchUtils";
+import { ApiResponse } from "../../utils/FetchUtils";
 import StoreConfigs from "../admin-store-manage/StoreConfigs";
 import useUploadMultipleImagesApi from "../../hooks/use-upload-multiple-images-api";
 import useUploadSingleImageApi from "../../hooks/use-upload-single-image-api";
 import ResourceUrl from "../../constants/ResourceUrl";
-import {SelectOption} from "../../types";
-import {ProductRequest, ProductResponse} from "../../models/Product";
-import {useAppSelector} from "../../redux/hooks";
+import { SelectOption } from "../../types";
+import { ProductRequest, ProductResponse } from "../../models/Product";
+import { useAppSelector } from "../../redux/hooks";
 import useGetAllApi from "../../hooks/use-get-all-api";
-import {CategoryResponse} from "../../models/Category";
+import { CategoryResponse } from "../../models/Category";
 import useGetByIdApi from "../../hooks/use-get-by-id-api";
-import {useParams} from "react-router-dom";
-import {useQueryClient} from "react-query";
+import { useParams } from "react-router-dom";
+import { useQueryClient } from "react-query";
 import useUpdateApi from "../../hooks/use-update-api";
 
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
@@ -28,13 +28,13 @@ const getBase64 = (file: FileType): Promise<string> =>
     });
 
 function useSellerUpdateProductViewModel() {
-    const {id} = useParams()
+    const { id } = useParams()
 
     const [form] = Form.useForm();
 
     const [product, setProduct] = useState<ProductResponse>()
 
-    const {user} = useAppSelector(state => state.auth)
+    const { user } = useAppSelector(state => state.auth)
 
     const [loading, setLoading] = useState<boolean>(false)
 
@@ -58,7 +58,7 @@ function useSellerUpdateProductViewModel() {
                 status: 'done',
                 url: value,
             }))
-
+            form.setFieldValue('productImageFiles', fileList)
             // const formValues: ProductRequest = {
             //     name: productResponse.name,
             //     price: Number(productResponse.price),
@@ -66,7 +66,7 @@ function useSellerUpdateProductViewModel() {
             //     categoryId: productResponse.categoryId,
             //     productImages: [],
             //     userId: user?.id ? user.id : 1
-            //
+            //  
             // };
             setProductImageFiles(fileList)
             // form.setFieldsValue(formValues)
@@ -79,7 +79,7 @@ function useSellerUpdateProductViewModel() {
     );
 
     useGetAllApi<CategoryResponse>(ResourceUrl.CLIENT_CATEGORY, "categories",
-        {all: true},
+        { all: true },
         (categoryListResponse) => {
             const selectList: SelectOption[] = categoryListResponse.content.map((item) => ({
                 value: String(item.id),
@@ -95,7 +95,7 @@ function useSellerUpdateProductViewModel() {
     const uploadMultipleImagesApi = useUploadMultipleImagesApi()
 
 
-    const handleChangeProductImage: UploadProps['onChange'] = ({fileList: newFileList}) => {
+    const handleChangeProductImage: UploadProps['onChange'] = ({ fileList: newFileList }) => {
         setProductImageFiles(newFileList);
         form.setFieldValue('productImageFiles', newFileList)
     }
@@ -125,7 +125,7 @@ function useSellerUpdateProductViewModel() {
             }
             updateApi.mutate(requestBody, {
                 onSuccess: () => {
-                    form.resetFields()
+
                     setLoading(false)
                 },
                 onError: () => setLoading(false)

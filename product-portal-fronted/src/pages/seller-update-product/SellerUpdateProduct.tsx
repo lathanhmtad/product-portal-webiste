@@ -1,9 +1,9 @@
 import { FaArrowLeft, FaPlus, FaSave, FaUpload } from "react-icons/fa"
 import "./SellerAddProduct.scss"
 import { Link } from "react-router-dom"
-import {Button, Col, Form, FormProps, Image, Input, InputNumber, Row, Select, Upload} from "antd";
-import {PlusOutlined} from "@ant-design/icons";
-import {ProductRequest} from "../../models/Product";
+import { Button, Col, Form, FormProps, Image, Input, InputNumber, Row, Select, Upload } from "antd";
+import { PlusOutlined } from "@ant-design/icons";
+import { ProductRequest } from "../../models/Product";
 import useSellerUpdateProductViewModel from "./SellerUpdateProduct.vm";
 export default function SellerUpdateProduct() {
     const {
@@ -28,7 +28,7 @@ export default function SellerUpdateProduct() {
         handleFormSubmit(values)
     };
 
-    if(product) {
+    if (product) {
         return <div className="wrapper-seller-add-product">
             <Form
                 form={form}
@@ -47,15 +47,15 @@ export default function SellerUpdateProduct() {
                 <span className="infor-title">CẬP NHẬP SẢN PHẨM / ID:{id}</span>
 
                 <div className="prod-information">
-                    <div style={{width: '100%'}} className="register-info-content">
+                    <div style={{ width: '100%' }} className="register-info-content">
                         <Row gutter={24}>
                             <Col span={16}>
                                 <Form.Item<ProductRequest>
                                     label="Tên sản phẩm"
-                                    labelCol={{span: 24}}
+                                    labelCol={{ span: 24 }}
                                     name="name"
                                     rules={[
-                                        {required: true, message: 'Vui lòng nhập tên sản phẩm!'},
+                                        { required: true, message: 'Vui lòng nhập tên sản phẩm!' },
                                     ]}
                                 >
                                     <Input
@@ -65,11 +65,11 @@ export default function SellerUpdateProduct() {
                             <Col span={8}>
                                 <Form.Item<ProductRequest>
                                     label="Giá"
-                                    labelCol={{span: 24}}
+                                    labelCol={{ span: 24 }}
                                     name="price"
-                                    rules={[{required: true, message: 'Vui lòng nhập giá sản phẩm!'}]}
+                                    rules={[{ required: true, message: 'Vui lòng nhập giá sản phẩm!' }]}
                                 >
-                                    <InputNumber style={{width: '100%'}} addonAfter="VND" defaultValue={0}/>
+                                    <InputNumber style={{ width: '100%' }} addonAfter="VND" defaultValue={0} />
                                 </Form.Item>
                             </Col>
                         </Row>
@@ -78,16 +78,16 @@ export default function SellerUpdateProduct() {
                             <Col span={8}>
                                 <Form.Item<ProductRequest>
                                     label="Danh mục sản phẩm"
-                                    labelCol={{span: 24}}
+                                    labelCol={{ span: 24 }}
                                     name="categoryId"
                                     // initialValue={product.categoryId}
-                                    rules={[{required: true, message: 'Vui lòng chọn danh sản phẩm!'}]}
+                                    rules={[{ required: true, message: 'Vui lòng chọn danh sản phẩm!' }]}
                                 >
                                     <Select
                                         // defaultValue={product.categoryId}
                                         // value={product?.categoryId}
-                                        labelInValue={true}
-                                        style={{width: '100%'}}
+                                        // labelInValue={true}
+                                        style={{ width: '100%' }}
                                         options={categorySelectList}
                                     />
                                 </Form.Item>
@@ -95,11 +95,11 @@ export default function SellerUpdateProduct() {
                             <Col span={16}>
                                 <Form.Item<ProductRequest>
                                     label="Link sản phẩm"
-                                    labelCol={{span: 24}}
+                                    labelCol={{ span: 24 }}
                                     name="productUrl"
-                                    rules={[{required: true, message: 'Vui lòng nhập đường dẫn sản phẩm!'}]}
+                                    rules={[{ required: true, message: 'Vui lòng nhập đường dẫn sản phẩm!' }]}
                                 >
-                                    <Input/>
+                                    <Input />
                                 </Form.Item>
                             </Col>
                         </Row>
@@ -107,8 +107,8 @@ export default function SellerUpdateProduct() {
                         <Form.Item
                             name="productImageFiles"
                             label="Hình ảnh sản phẩm"
-                            labelCol={{span: 24}}
-                            rules={[{required: true, message: 'Vui lòng tải ít nhất một hình ảnh về sản phẩm!'}]}
+                            labelCol={{ span: 24 }}
+                            rules={[{ required: true, message: 'Vui lòng tải ít nhất một hình ảnh về sản phẩm!' }]}
                         >
                             <Upload
                                 multiple
@@ -119,16 +119,16 @@ export default function SellerUpdateProduct() {
                                 onChange={handleChangeProductImage}
                                 onPreview={handleOpenPreview}
                             >
-                                <button style={{border: 0, background: 'none'}} type="button">
-                                    <PlusOutlined/>
-                                    <div style={{marginTop: 8}}>Upload</div>
+                                <button style={{ border: 0, background: 'none' }} type="button">
+                                    <PlusOutlined />
+                                    <div style={{ marginTop: 8 }}>Upload</div>
                                 </button>
                             </Upload>
                         </Form.Item>
 
-                        <Button style={{marginTop: '8px'}} type='primary' loading={loading} htmlType='submit'
-                                size='large'
-                                className="register-button">Cập nhập</Button>
+                        <Button style={{ marginTop: '8px' }} type='primary' loading={loading} htmlType='submit'
+                            size='large'
+                            className="register-button">Cập nhập</Button>
                     </div>
                 </div>
             </Form>
@@ -136,7 +136,7 @@ export default function SellerUpdateProduct() {
 
             {previewImage && (
                 <Image
-                    wrapperStyle={{display: 'none'}}
+                    wrapperStyle={{ display: 'none' }}
                     preview={{
                         visible: previewOpen,
                         onVisibleChange: (visible) => setPreviewOpen(visible),
