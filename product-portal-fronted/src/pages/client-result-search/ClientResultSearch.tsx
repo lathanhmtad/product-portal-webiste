@@ -7,11 +7,11 @@ import { ProductResponse } from "../../models/Product";
 import ResourceUrl from "../../constants/ResourceUrl";
 import PageConfigs from "../PageConfigs";
 import { ListResponse } from "../../utils/FetchUtils";
-import { useAppDispatch } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { useEffect } from "react";
 import { Filter, FilterCriteria, NumberOperator } from "../../utils/FilterUtils";
 import { EntityPropertyType } from "../../types";
-import {setActiveFilter, setActivePage, setActivePageSize, setSearchToken} from "../../redux/slices/managePageSlice";
+import { setActiveFilter, setActivePage, setActivePageSize } from "../../redux/slices/managePageSlice";
 import ManagePagination from "../../components/ManagePagination";
 import useResetManagePageState from "../../hooks/use-reset-manage-page-state";
 
@@ -178,35 +178,19 @@ products.forEach((value) => {
         outstandingProducts.push(value);
     }
 })
-export default function ClientSubProduct() {
+export default function ClientResultSearch() {
 
-    const { id } = useParams()
+    // const { id } = useParams()
+
+    const search = useAppSelector(state => state.managePage.searchToken)
 
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        const filterCriteria: FilterCriteria = {
-            property: 'category.id',
-            type: EntityPropertyType.NUMBER,
-            operator: NumberOperator.EQUALS,
-            value: `${id}`
-        }
-
-        const filter: Filter = {
-            // id: `1`,
-            // createdAt: `adw`,
-            // updatedAt: `waad`,
-            // createdBy: 1,
-            // updatedBy: 1,
-            // name: `name`,
-            sortCriteriaList: [],
-            filterCriteriaList: [filterCriteria],
-        }
         dispatch(setActivePageSize(8))
-        dispatch(setActiveFilter(filter))
+        dispatch(setActiveFilter(null))
         dispatch(setActivePage(1))
-        dispatch(setSearchToken(''))
-    }, [id])
+    }, [search])
     const {
         isLoading,
         data: listResponse = PageConfigs.initListResponse as ListResponse<ProductResponse>
@@ -230,10 +214,10 @@ export default function ClientSubProduct() {
                 <div className="all-products">
                     {isLoading ? <div>Đang tải</div> : <>
                         {listResponse.content.length > 0 && <h2 className="all-products-title text-uppercase">TẤT CẢ SẢN
-                            PHẨM: {listResponse.content[0]?.category}</h2>}
+                            PHẨM</h2>}
 
                         {listResponse.content.length === 0 &&
-                            <h2 className="all-products-title text-uppercase">danh mục này chưa có sản phẩm nào</h2>}
+                            <h2 className="all-products-title text-uppercase">Không tìm thấy sản phẩm</h2>}
                         <div className="list-all-product">
                             {listResponse.content.map((value) => {
                                 return <Link to={`/detail-product/${value.id}`} className="all-product-item">

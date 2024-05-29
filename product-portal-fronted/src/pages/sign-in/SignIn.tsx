@@ -41,14 +41,9 @@ export default function SignIn() {
                 message: 'Đăng nhập thành công'
             })
 
-            if (loginResponse.user.role.toLowerCase() === 'admin') {
-                navigate('/admin')
-            } else
-                if (loginResponse.user.role.toLowerCase() === 'seller') {
-                    navigate('/seller')
-                } else {
-                    navigate('/')
-                }
+            if (loginResponse.user.role.toLowerCase() === 'admin') navigate('/admin')
+            else if (loginResponse.user.role.toLowerCase() === 'seller') navigate('/seller')
+            else navigate('/')
 
         } catch (e: any) {
             dispatch(resetAuthState())

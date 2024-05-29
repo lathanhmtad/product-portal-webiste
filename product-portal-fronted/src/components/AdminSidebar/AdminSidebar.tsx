@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { App } from "antd";
 import { resetAuthState } from "../../redux/slices/authSlice";
+import { useState } from "react";
 
 export default function AdminSidebar() {
     const dispatch = useDispatch()
@@ -19,14 +20,15 @@ export default function AdminSidebar() {
             message: 'Đăng xuất thành công!'
         })
     }
+    const [isActive, setIsActive] = useState([true, false])
     return (
         <div className="admin-sidebar">
             <div className="manage">
-                <Link to="/admin" className="manage-user">
+                <Link onClick={() => setIsActive([true, false])} to="/admin" className={`manage-user ${isActive[0] ? 'active' : ''}`}>
                     <FaUser className="user-icon" />
                     <span className="manage-user-content">Quản lý người dùng</span>
                 </Link>
-                <Link to="/admin/store" className="manage-store">
+                <Link onClick={() => setIsActive([false, true])} to="/admin/store" className={`manage-store ${isActive[1] ? 'active' : ''}`}>
                     <FaStore className="store-icon" />
                     <span className="manage-store-content">Quản lý cửa hàng</span>
                 </Link>

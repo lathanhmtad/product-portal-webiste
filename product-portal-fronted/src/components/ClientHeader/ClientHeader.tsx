@@ -1,5 +1,5 @@
 import logo from '../../assets/img/logo.jpg'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './ClientHeader.scss'
 import { IoSearch } from "react-icons/io5";
 import { FaUser } from "react-icons/fa";
@@ -16,6 +16,9 @@ import ResourceUrl from "../../constants/ResourceUrl";
 import PageConfigs from "../../pages/PageConfigs";
 import { ListResponse } from "../../utils/FetchUtils";
 import { useState } from 'react';
+import Search from "antd/es/input/Search";
+import { SearchProps } from "antd/lib/input";
+import { setSearchToken } from "../../redux/slices/managePageSlice";
 
 const categories: {
     cateLink: string,
@@ -227,6 +230,8 @@ export default function ClientHeader() {
 
     const dispatch = useAppDispatch()
 
+    const navigate = useNavigate()
+
     const handleLogout = () => {
 
         dispatch(resetAuthState())
@@ -242,6 +247,13 @@ export default function ClientHeader() {
     const {
         data: listResponse = PageConfigs.initListResponse as ListResponse<CategoryResponse>
     } = useGetAllApi<CategoryResponse>(ResourceUrl.CLIENT_CATEGORY, "categories", { all: true })
+
+    const handleSearch: SearchProps['onSearch'] = (value,
+        _e,
+        info) => {
+        dispatch(setSearchToken(value))
+        navigate('/result-search')
+    }
 
     return (
         <div className="wrapper-client-header">
@@ -295,8 +307,9 @@ export default function ClientHeader() {
                     </li>
                 </ul>
                 <li className='search'>
-                    <input type="text" placeholder='Bạn tìm gì hôm nay...' />
-                    <IoSearch className='search-icon' />
+                    <Search size='large' placeholder="Tìm kiếm..." onSearch={handleSearch} style={{ width: 200 }} />
+                    {/*<input onClick={handleSearch} type="text" placeholder='Bạn tìm gì hôm nay...'/>*/}
+                    {/*<IoSearch className='search-icon'/>*/}
                 </li>
                 <li className='auth'>
                     {!user ? <>

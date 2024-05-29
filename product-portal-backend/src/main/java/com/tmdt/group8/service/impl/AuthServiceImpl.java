@@ -43,9 +43,8 @@ public class AuthServiceImpl implements AuthService {
         }
 
         if(!user.getEnabled()) {
-            throw new AccountBlockedException("Tài khoaản của bạn đã bị khóa");
+            throw new AccountBlockedException("Tài khoản của bạn đã bị khóa hoặc chưa được duyệt");
         }
-
 
         Authentication authentication = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
 

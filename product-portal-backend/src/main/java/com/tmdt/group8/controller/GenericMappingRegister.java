@@ -2,6 +2,7 @@ package com.tmdt.group8.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.tmdt.group8.constant.ResourceName;
+import com.tmdt.group8.constant.SearchFields;
 import com.tmdt.group8.dto.category.CategoryRequest;
 import com.tmdt.group8.dto.category.CategoryResponse;
 import com.tmdt.group8.dto.product.ProductRequest;
@@ -74,7 +75,7 @@ public class GenericMappingRegister {
         register("products", productController, productService.init(
                 context.getBean(ProductRepo.class),
                 context.getBean(ProductMapper.class),
-                null,
+                SearchFields.PRODUCT,
                 ResourceName.PRODUCT
         ), Object.class);
 

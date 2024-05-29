@@ -6,15 +6,22 @@ import { FaLockOpen } from "react-icons/fa";
 import Pagination from "../../components/Pagination";
 import Avatar from "../../assets/img/avatar.jpg"
 import { FaXmark } from "react-icons/fa6";
-import { Image, TableProps, Tag, Tooltip } from "antd";
+import { App, Image, Select, TableProps, Tag, Tooltip } from "antd";
 import { UserResponse } from "../../models/User";
 import ManageTable from "../../components/ManageTable";
 import useResetManagePageState from "../../hooks/use-reset-manage-page-state";
 import useGetAllApi from "../../hooks/use-get-all-api";
 import UserConfigs from "./UserConfigs";
-import { ListResponse } from "../../utils/FetchUtils";
+import { ApiResponse, ListResponse } from "../../utils/FetchUtils";
 import PageConfigs from "../PageConfigs";
 import ManagePagination from "../../components/ManagePagination";
+import { Filter, FilterCriteria, NumberOperator } from "../../utils/FilterUtils";
+import { EntityPropertyType } from "../../types";
+import { setActiveFilter, setActivePage } from "../../redux/slices/managePageSlice";
+import { useAppDispatch } from "../../redux/hooks";
+import useUpdateApi from "../../hooks/use-update-api";
+import ResourceUrl from "../../constants/ResourceUrl";
+import { useState } from "react";
 
 const userData: {
     userId: string,
@@ -92,12 +99,46 @@ const userData: {
 export default function AdminUserManage() {
 
     useResetManagePageState()
+    const { modal, message } = App.useApp()
+
+    const dispatch = useAppDispatch()
+
+    const [uId, setUId] = useState(0)
 
     const {
         isLoading,
         data: listResponse = PageConfigs.initListResponse as ListResponse<UserResponse>
     } = useGetAllApi<UserResponse>(UserConfigs.resourceUrl, UserConfigs.resourceKey)
 
+    const updateApi =
+        useUpdateApi<Number, ApiResponse>(ResourceUrl.ACTIVE_SELLER, "users", uId)
+
+    const key: string = 'enabledable';
+
+    const handleEnabledStatus = (record: UserResponse) => {
+        setUId(record.id)
+        modal.confirm(
+            {
+                title: 'Xác nhận duyệt',
+                content: `Bạn chắc chắn duyệt người dùng có id là ${uId} thành seller?`,
+                onOk: () => {
+                    void message.open({
+                        key,
+                        type: 'loading',
+                        content: 'Đang kích hoạt seller có id là ' + uId + '...',
+                        duration: 0
+                    });
+                    updateApi.mutate(uId, {
+                        onSuccess: () => {
+                            message.destroy(key)
+                        },
+                        onError: () => message.destroy(key)
+                    });
+                },
+                maskClosable: true,
+            }
+        );
+    }
 
     const entityDetailsTableRowsFragment: TableProps<UserResponse>['columns'] = [
         {
@@ -176,10 +217,58 @@ export default function AdminUserManage() {
             title: 'Trạng thái',
             dataIndex: 'enabled',
             key: 'enabled',
-            render: (status: boolean) => <Tag color={status ? 'blue' : 'red'}>{status ? 'Active' : 'Inactive'}</Tag>
+            render: (status: boolean, record) => <Tag
+                onClick={!status ? () => handleEnabledStatus(record) : undefined}
+                color={status ? 'blue' : 'red'} style={{ cursor: 'pointer' }}>{status ? 'Active' : 'Inactive'}</Tag>
         },
     ]
 
+    const handleChange = (value: string) => {
+        if (value === 'all') {
+            dispatch(setActiveFilter(null))
+        } else if (value === 'active') {
+            const filterCriteria: FilterCriteria = {
+                property: 'enabled',
+                type: EntityPropertyType.BOOLEAN,
+                operator: NumberOperator.EQUALS,
+                value: 'true'
+            }
+
+            const filter: Filter = {
+                // id: `1`,
+                // createdAt: `adw`,
+                // updatedAt: `waad`,
+                // createdBy: 1,
+                // updatedBy: 1,
+                // name: `name`,
+                sortCriteriaList: [],
+                filterCriteriaList: [filterCriteria],
+            }
+
+            dispatch(setActiveFilter(filter))
+        } else if (value === 'inActive') {
+            const filterCriteria: FilterCriteria = {
+                property: 'enabled',
+                type: EntityPropertyType.BOOLEAN,
+                operator: NumberOperator.EQUALS,
+                value: 'false'
+            }
+
+            const filter: Filter = {
+                // id: `1`,
+                // createdAt: `adw`,
+                // updatedAt: `waad`,
+                // createdBy: 1,
+                // updatedBy: 1,
+                // name: `name`,
+                sortCriteriaList: [],
+                filterCriteriaList: [filterCriteria],
+            }
+
+            dispatch(setActiveFilter(filter))
+        }
+
+    }
 
     return (
         <div className="admin-user-manage">
@@ -189,13 +278,24 @@ export default function AdminUserManage() {
                         <input type="text" placeholder='Tìm kiếm...' className="search-input" />
                         <IoSearch className='search-icon' />
                     </div>
-                    <select name="" id="role">
-                        <option className="role-item" value="Customer">Customer</option>
-                        <option className="role-item" value="Seller">Seller</option>
-                        <option className="role-item" value="Admin">Admin</option>
-                    </select>
+                    {/*<select name="" id="role">*/}
+                    {/*    <option className="role-item" value="Customer">Customer</option>*/}
+                    {/*    <option className="role-item" value="Seller">Seller</option>*/}
+                    {/*    <option className="role-item" value="Admin">Admin</option>*/}
+                    {/*</select>*/}
+
+                    <Select
+                        defaultValue="all"
+                        style={{ width: 200, height: 40 }}
+                        onChange={handleChange}
+                        options={[
+                            { value: 'all', label: 'Tất cả' },
+                            { value: 'active', label: 'Đã duyệt' },
+                            { value: 'inActive', label: 'Chưa duyệt' },
+                        ]}
+                    />
                 </div>
-                <button className="approve">Duyệt Seller</button>
+                {/*<button onClick={getInactiveSeller} className="approve">Duyệt Seller</button>*/}
             </div>
 
             <ManageTable
