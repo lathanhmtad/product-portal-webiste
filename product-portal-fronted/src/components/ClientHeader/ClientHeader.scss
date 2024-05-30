@@ -54,6 +54,7 @@
         @include anchorNavigation();
       }
 
+      .categories.active,
       a.active {
         border-bottom: 3px solid #fff;
       }

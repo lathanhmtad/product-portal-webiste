@@ -11,7 +11,7 @@ import { useAppDispatch } from "../../redux/hooks";
 import { useEffect } from "react";
 import { Filter, FilterCriteria, NumberOperator } from "../../utils/FilterUtils";
 import { EntityPropertyType } from "../../types";
-import {setActiveFilter, setActivePage, setActivePageSize, setSearchToken} from "../../redux/slices/managePageSlice";
+import { setActiveFilter, setActivePage, setActivePageSize, setSearchToken } from "../../redux/slices/managePageSlice";
 import ManagePagination from "../../components/ManagePagination";
 import useResetManagePageState from "../../hooks/use-reset-manage-page-state";
 
@@ -242,6 +242,7 @@ export default function ClientSubProduct() {
                                     <img src={value.productImages[0]} alt=""
                                         className="all-product-img" />
                                     <span className="all-product-name">{value.name}</span>
+                                    <span className="store-name">{value.storeOwner.name}</span>
                                 </Link>
                             })}
                         </div>

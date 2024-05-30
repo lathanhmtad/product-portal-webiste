@@ -242,7 +242,7 @@ export default function ClientHeader() {
     }
 
     const [isOpen, setIsOpen] = useState(false)
-    const [isActive, setIsActive] = useState([true, false, false])
+    const [isActive, setIsActive] = useState([true, false, false, false])
 
     const {
         data: listResponse = PageConfigs.initListResponse as ListResponse<CategoryResponse>
@@ -264,19 +264,19 @@ export default function ClientHeader() {
                     </Link>
                 </li>
                 <ul className='sub-header'>
-                    <li onClick={() => setIsActive([true, false, false])}>
+                    <li onClick={() => setIsActive([true, false, false, false])}>
                         <Link className={`${isActive[0] ? 'active' : ''}`} to={'/'}>Trang chủ</Link>
                     </li>
-                    <li onClick={() => setIsActive([false, true, false])}>
+                    <li onClick={() => setIsActive([false, true, false, false])}>
                         <Link className={`${isActive[1] ? 'active' : ''}`} to={'/introduce'}>Giới thiệu</Link>
                     </li>
-                    <li className='categories'>
+                    <li className={`categories ${isActive[2] ? 'active' : ''}`}>
                         Danh mục sản phẩm
                         <FaAngleDown className='down-icon' />
                         <ul className="categories-list">
                             {listResponse.content.map((value) => {
-                                return <li key={value.id} className="super-categories">
-                                    <Link to={`/products/categories/${value.id}`}>{value.name}</Link>
+                                return <li key={value.id} className='super-categories'>
+                                    <Link onClick={() => setIsActive([false, false, true, false])} to={`/products/categories/${value.id}`}>{value.name}</Link>
                                     {/*{value.subCate.map((subValue) => {*/}
                                     {/*    return <li className="sub-categories">*/}
                                     {/*        <Link to={subValue.subCateLink}>{subValue.subCateName}</Link>*/}
@@ -302,8 +302,8 @@ export default function ClientHeader() {
                     {user?.role.toLowerCase() === 'admin' && <li>
                         <Link to={'/admin'}>Admin</Link>
                     </li>}
-                    <li onClick={() => setIsActive([false, false, true])}>
-                        <Link className={`${isActive[2] ? 'active' : ''}`} to={'/contact'}>Liên hệ</Link>
+                    <li onClick={() => setIsActive([false, false, false, true])}>
+                        <Link className={`${isActive[3] ? 'active' : ''}`} to={'/contact'}>Liên hệ</Link>
                     </li>
                 </ul>
                 <li className='search'>
