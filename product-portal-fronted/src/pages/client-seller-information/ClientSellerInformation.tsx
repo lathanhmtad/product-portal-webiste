@@ -1,13 +1,13 @@
-import {Button, Form, FormProps, Image, Input} from "antd";
-import {useAppSelector} from "../../redux/hooks";
+import { Button, Flex, Form, FormProps, Image, Input } from "antd";
+import { useAppSelector } from "../../redux/hooks";
 import useGetAllApi from "../../hooks/use-get-all-api";
 import PageConfigs from "../PageConfigs";
-import {ApiResponse, ListResponse} from "../../utils/FetchUtils";
-import {StoreResponse} from "../../models/Store";
+import { ApiResponse, ListResponse } from "../../utils/FetchUtils";
+import { StoreResponse } from "../../models/Store";
 import StoreConfigs from "../admin-store-manage/StoreConfigs";
 import useUpdateApi from "../../hooks/use-update-api";
 import ResourceUrl from "../../constants/ResourceUrl";
-import {UserRequest} from "../../models/User";
+import { UserRequest } from "../../models/User";
 
 export default function ClientSellerInformation() {
 
@@ -18,7 +18,7 @@ export default function ClientSellerInformation() {
         data: listResponse = PageConfigs.initListResponse as ListResponse<StoreResponse>
     } =
         useGetAllApi<StoreResponse>
-        (StoreConfigs.resourceUrl, StoreConfigs.resourceKey, {filter: `user.id==${user?.id}`})
+            (StoreConfigs.resourceUrl, StoreConfigs.resourceKey, { filter: `user.id==${user?.id}` })
 
     const updateApi = useUpdateApi<UserRequest, ApiResponse>
         (ResourceUrl.CLIENT_SELLER_UPDATE_INFO, "users", Number(user?.id))
@@ -29,12 +29,12 @@ export default function ClientSellerInformation() {
 
     if (user && !isLoading) {
         return <div className='mt-5'>
-            <h1>Thông tin cá nhân</h1>
+            <h1 style={{ textAlign: 'center', marginBottom: '30px' }}>THÔNG TIN CÁ NHÂN</h1>
             <Form
                 name="basic"
-                labelCol={{span: 8}}
-                wrapperCol={{span: 16}}
-                style={{maxWidth: 600}}
+                labelCol={{ span: 8 }}
+                wrapperCol={{ span: 16 }}
+                style={{ maxWidth: 600, position: 'relative', left: '50%', transform: 'translateX(-50%)' }}
                 initialValues={{
                     id: user.id,
                     username: user.username,
@@ -51,14 +51,14 @@ export default function ClientSellerInformation() {
                     label="Id người dùng"
                     name="id"
                 >
-                    <Input disabled/>
+                    <Input disabled />
                 </Form.Item>
 
                 <Form.Item<UserRequest>
                     label="Tên đăng nhập"
                     name="username"
                 >
-                    <Input/>
+                    <Input />
                 </Form.Item>
 
                 <Form.Item<UserRequest>
@@ -73,50 +73,56 @@ export default function ClientSellerInformation() {
                     label="Họ và tên"
                     name="fullName"
                 >
-                    <Input/>
+                    <Input />
                 </Form.Item>
 
                 <Form.Item<UserRequest>
                     label="Số điện thoại"
                     name="phoneNumber"
                 >
-                    <Input/>
+                    <Input />
                 </Form.Item>
 
                 <Form.Item<UserRequest>
                     label="Password"
                     name="password"
                 >
-                    <Input.Password placeholder='Nếu không cập nhập hãy bỏ trống'/>
+                    <Input.Password placeholder='Nếu không cập nhập hãy bỏ trống' />
                 </Form.Item>
 
                 <Form.Item
                     label="Cửa hàng sỡ hữu"
                     name="storeName"
                 >
-                    <Input disabled/>
+                    <Input disabled />
                 </Form.Item>
 
                 <Form.Item
                     label="Link hiện tại của cửa hàng"
                     name="storeLink"
                 >
-                    <Input disabled/>
+                    <Input disabled />
                 </Form.Item>
 
-                <Image
-                    width={200}
-                    src={listResponse.content[0].imageUrls[0]}
-                />
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <Image
+                        width={200}
+                        height={200}
+                        style={{ objectFit: 'cover' }}
+                        src={listResponse.content[0].imageUrls[0]}
+                    />
 
-                <Image
-                    width={200}
-                    src={user?.avatar}
-                />
+                    <Image
+                        width={200}
+                        height={200}
+                        style={{ objectFit: 'cover' }}
+                        src={user?.avatar}
+                    />
+                </div>
 
 
-                <Form.Item wrapperCol={{offset: 8, span: 16}}>
-                    <Button type="primary" htmlType="submit">
+                <Form.Item style={{ position: 'relative', left: '50%', marginTop: '20px' }}>
+                    <Button type="primary" htmlType="submit" style={{ transform: 'translateX(-50%)' }}>
                         Submit
                     </Button>
                 </Form.Item>
