@@ -116,19 +116,20 @@ export default function AdminUserManage() {
     const key: string = 'enabledable';
 
     const handleEnabledStatus = (record: UserResponse) => {
+        console.log(record.id)
         setUId(record.id)
         modal.confirm(
             {
-                title: 'Xác nhận duyệt',
-                content: `Chuyển trạng thái người dùng?`,
+                title: record.enabled ? 'Xác nhận vô hiệu hóa' : 'Xác nhận duyệt',
+                content: record.enabled ? `Xác nhận vô hiệu hóa tài khoản: ${record.id} - ${record.fullName}?` : `Xác nhận duyệt tài khoản: ${record.id} - ${record.fullName}?`,
                 onOk: () => {
                     void message.open({
                         key,
                         type: 'loading',
-                        content: 'Đang kích hoạt seller có id là ' + uId + '...',
+                        content: 'Đang chuyển trạng thái tài khoản có ID là ' + record.id + '...',
                         duration: 0
                     });
-                    updateApi.mutate(uId, {
+                    updateApi.mutate(record.id, {
                         onSuccess: () => {
                             message.destroy(key)
                         },
