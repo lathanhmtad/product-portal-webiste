@@ -10,6 +10,14 @@ export interface UserResponse extends BaseResponse {
     role: string
 }
 
+export interface UserRequest {
+    password: string
+    fullName: string
+    email: string
+    username: string
+    phoneNumber:string
+}
+
 
 export interface SellerRequest {
     fullName: string

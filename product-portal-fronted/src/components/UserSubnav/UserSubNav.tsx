@@ -28,7 +28,7 @@ export default function UserSubNav(props?: UserSubnavProps) {
                 <span className="user-name">{user?.fullName}</span>
             </li>
             <li>
-                <Link to='/' className="user-info">
+                <Link to='info' className="user-info">
                     <FaUser className="user-icon" />
                     Thông tin cá nhân
                 </Link>

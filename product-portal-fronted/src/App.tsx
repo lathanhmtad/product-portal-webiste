@@ -24,6 +24,7 @@ import ClientIntroduce from './pages/client-introduce';
 import ClientContact from './pages/client-contact';
 import SellerUpdateProduct from "./pages/seller-update-product";
 import ClientResultSearch from "./pages/client-result-search";
+import ClientSellerInformation from "./pages/client-seller-information";
 
 function App() {
     return (
@@ -51,6 +52,7 @@ function App() {
                     <Route index element={<SellerProductManage/>}/>
                     <Route path='add-product' element={<SellerAddProduct/>}/>
                     <Route path='update/:id' element={<SellerUpdateProduct/>}/>
+                    <Route path='info' element={<ClientSellerInformation />} />
                 </Route>
             </Routes>
         </AppAntd>

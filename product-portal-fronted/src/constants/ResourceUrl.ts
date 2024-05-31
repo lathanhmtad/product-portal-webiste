@@ -12,6 +12,7 @@ class ResourceUrl {
     static CLIENT_SELLER_REGISTER = apiPath + '/sellers/register'
     static CLIENT_SELLER_ADD_PRODCUT = apiPath + '/sellers/add-product'
     static CLIENT_SELLER_UPDATE_PRODUCT = apiPath + '/sellers/update-product'
+    static CLIENT_SELLER_UPDATE_INFO = apiPath + '/sellers/update-info'
 
 
     static CLIENT_CATEGORY = apiPath + '/categories'

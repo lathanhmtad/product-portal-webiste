@@ -3,7 +3,9 @@ package com.tmdt.group8.controller;
 import com.cloudinary.Cloudinary;
 import com.tmdt.group8.dto.ApiResponse;
 import com.tmdt.group8.dto.product.ProductRequest;
+import com.tmdt.group8.dto.store.StoreResponse;
 import com.tmdt.group8.dto.user.SellerRegisterRequest;
+import com.tmdt.group8.dto.user.UserRequest;
 import com.tmdt.group8.entity.*;
 import com.tmdt.group8.repository.*;
 import com.tmdt.group8.utils.CloudinaryUtils;
@@ -27,6 +29,7 @@ public class ClientSellerController {
     private CategoryRepo categoryRepo;
     private PasswordEncoder passwordEncoder;
     private UrlProductRepo urlProductRepo;
+
 
     @PutMapping("/active/{sellerId}")
     public ResponseEntity<ApiResponse> activeSeller(@PathVariable("sellerId") Long uId2,
@@ -158,6 +161,28 @@ public class ClientSellerController {
             e.printStackTrace();
             return null;
         }
+    }
+
+    @PutMapping("/update-info/{uId}")
+    public ResponseEntity<ApiResponse> updateInfo(
+            @PathVariable("uId") Long userId,
+            @RequestBody UserRequest uRequest) {
+        User u = userRepo.findById(userId).get();
+
+        u.setFullName(uRequest.getFullName());
+        u.setUsername(uRequest.getUsername());
+        u.setPhoneNumber(uRequest.getPhoneNumber());
+        u.setEmail(uRequest.getEmail());
+
+        if(uRequest.getPassword() != null){
+            u.setPassword(passwordEncoder.encode(uRequest.getPassword()));
+        }
+
+        userRepo.save(u);
+
+
+        return ResponseEntity.ok(ApiResponse.builder().statusCode(200).message("Update thành công").build());
+
     }
 
 }
