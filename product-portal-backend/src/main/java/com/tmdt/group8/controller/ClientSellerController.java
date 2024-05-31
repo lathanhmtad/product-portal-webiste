@@ -36,11 +36,11 @@ public class ClientSellerController {
                                                     @RequestBody Long uId) {
         User u = userRepo.findById(uId).get();
 
-        u.setEnabled(true);
+        u.setEnabled(!u.getEnabled());
 
         userRepo.save(u);
 
-        return ResponseEntity.ok(ApiResponse.builder().statusCode(200).message("Kích hoạt thành công").build());
+        return ResponseEntity.ok(ApiResponse.builder().statusCode(200).message("Chuyển trạng thái thành công").build());
 
     }
 

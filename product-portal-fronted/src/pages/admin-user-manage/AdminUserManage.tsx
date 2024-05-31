@@ -120,7 +120,7 @@ export default function AdminUserManage() {
         modal.confirm(
             {
                 title: 'Xác nhận duyệt',
-                content: `Bạn chắc chắn duyệt người dùng có id là ${uId} thành seller?`,
+                content: `Chuyển trạng thái người dùng?`,
                 onOk: () => {
                     void message.open({
                         key,
@@ -218,7 +218,7 @@ export default function AdminUserManage() {
             dataIndex: 'enabled',
             key: 'enabled',
             render: (status: boolean, record) => <Tag
-                onClick={!status ? () => handleEnabledStatus(record) : undefined}
+                onClick={() => handleEnabledStatus(record)}
                 color={status ? 'blue' : 'red'} style={{ cursor: 'pointer' }}>{status ? 'Active' : 'Inactive'}</Tag>
         },
     ]
