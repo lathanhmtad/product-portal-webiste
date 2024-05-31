@@ -11,6 +11,7 @@ import com.tmdt.group8.repository.*;
 import com.tmdt.group8.utils.CloudinaryUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -94,6 +95,11 @@ public class ClientSellerController {
             List<Store> stores = storeRepo.findByUserId(productRequest.getUserId());
             product.setCreatedBy(productRequest.getUserId());
             product.setStore(stores.get(0));
+
+            if(!productRequest.getProductUrl().startsWith(stores.get(0).getUrlStore())) {
+                return new ResponseEntity<>(ApiResponse.builder().statusCode(400).message("Đường link tạo sản phẩm không khớp với đường link cửa hàng").build(),
+                        HttpStatus.BAD_REQUEST);
+            }
 
             Product productSaved = productRepo.save(product);
 
