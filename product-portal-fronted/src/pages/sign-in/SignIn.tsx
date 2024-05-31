@@ -108,7 +108,7 @@ export default function SignIn() {
                 {/*    <Link to='/' className="forget-password">Quên mật khẩu?</Link>*/}
                 {/*    <button className="login-button">Đăng nhập</button>*/}
                 {/*</form>*/}
-                <span className="register-content">Bạn chưa có tài khoản? <Link to='/sign-up' className="register-link">Đăng ký</Link></span>
+                {/* <span className="register-content">Bạn chưa có tài khoản? <Link to='/sign-up' className="register-link">Đăng ký</Link></span> */}
                 <span className="seller-register-content"><span>Hoặc</span>Bạn muốn trở thành Seller? <Link
                     to='/seller-register' className="seller-register-link">Đăng ký Seller</Link></span>
             </div>
